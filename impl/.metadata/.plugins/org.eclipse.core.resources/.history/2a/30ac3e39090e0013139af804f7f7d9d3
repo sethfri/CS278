@@ -12,12 +12,12 @@ public class QRCodeObjRefExtractor implements ObjRefExtractor {
 		
 		/**
 		 * Asgn Step 7: Use the data above to create an
-		 * instance of your ExternalObjRef implementation
+		 * instance of your ExteranlObjRef implementation
 		 * and return it.
 		 * 
 		 */
 		
-		return new ExternalObjRefImpl(oref, server);
+		return null;
 	}
 
 }

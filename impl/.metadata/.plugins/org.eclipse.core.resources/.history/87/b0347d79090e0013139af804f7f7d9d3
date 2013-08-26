@@ -51,10 +51,6 @@ public class SMSBridgeActivity extends Activity implements AndroidSodaListener {
 		String server = ref.substring(0,ref.indexOf("|"));
 		objRef_ = ref.substring(ref.indexOf("|")+1);
 		
-		configuration_ = new ModuleImpl();
-		configuration_.setComponent(SMSManager.class, new SMSManagerImpl(this));
-		configuration_.setComponent(ObjRefExtractor.class, new QRCodeObjRefExtractor());
-		
 		AndroidSoda.init(this, new DefaultProtocol(), server, "/sms/", 8081, this);
 	}
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.magnum.soda.example.sms.SMSEvent.EVENT_TYPE"/>
+<fullyQualifiedTypeName name="java.util.Hashtable"/>
+<fullyQualifiedTypeName name="com.example.sodacloudsmsexampleclient.ModuleImpl"/>
+<fullyQualifiedTypeName name="org.magnum.soda.example.sms.SMSManagerImpl"/>
+<fullyQualifiedTypeName name="com.example.sodacloudsmsexampleclient.ObjRefExtractor"/>
+<fullyQualifiedTypeName name="com.example.sodacloudsmsexampleclient.QRCodeObjRefExtractor"/>
+</qualifiedTypeNameHistroy>
