@@ -29,7 +29,7 @@ public class SMSManagerImpl implements SMSManager, SMSSender {
 
 	private static final String MESSAGES = "pdus";
 	
-	private List<SMSListener> listeners = new ArrayList<SMSListener>();
+	private List<SMSListener> listeners_ = new ArrayList<SMSListener>();
 
 	public SMSManagerImpl(Context ctx){
 		
@@ -80,13 +80,13 @@ public class SMSManagerImpl implements SMSManager, SMSSender {
 	
 	@Override
 	public void addListener(SMSListener l) {
-		this.listeners.add(l);
+		this.listeners_.add(l);
 		l.smsSenderAdded(this);
 	}
 
 	@Override
 	public void removeListener(SMSListener l) {
-		this.listeners.remove(l);
+		this.listeners_.remove(l);
 	}
 	
 	public void received(SMS sms){
@@ -94,7 +94,7 @@ public class SMSManagerImpl implements SMSManager, SMSSender {
 		event.setEventType(EVENT_TYPE.SEND);
 		event.setSms(sms);
 		
-		for (SMSListener listener : this.listeners) {
+		for (SMSListener listener : this.listeners_) {
 			listener.smsEvent(event);
 		}
 	}
