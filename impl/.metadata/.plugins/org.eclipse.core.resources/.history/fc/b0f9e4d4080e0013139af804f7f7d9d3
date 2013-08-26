@@ -1,0 +1,19 @@
+package com.example.sodacloudsmsexampleclient;
+
+import org.magnum.soda.proxy.ObjRef;
+
+public class ExternalObjRefImpl implements ExternalObjRef {
+
+	@Override
+	public ObjRef getObjRef() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getPubSubHost() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
