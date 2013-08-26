@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.example.sodacloudsmsexampleclient.ClassMapper&apos; to &apos;ModuleImpl&apos;&#x0D;&#x0A;- Original project: &apos;SodaCloudSMSExampleClient&apos;&#x0D;&#x0A;- Original element: &apos;com.example.sodacloudsmsexampleclient.ClassMapper&apos;&#x0D;&#x0A;- Renamed element: &apos;com.example.sodacloudsmsexampleclient.ModuleImpl&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ClassMapper&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.example.sodacloudsmsexampleclient{ClassMapper.java[ClassMapper" matchStrategy="1" name="ModuleImpl" qualified="false" references="true" similarDeclarations="false" stamp="1377490235010" textual="false" version="1.0"/>
+</session>
