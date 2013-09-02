@@ -6,4 +6,16 @@
 <fullyQualifiedTypeName name="org.magnum.soda.example.sms.SMSManagerImpl"/>
 <fullyQualifiedTypeName name="com.example.sodacloudsmsexampleclient.ObjRefExtractor"/>
 <fullyQualifiedTypeName name="com.example.sodacloudsmsexampleclient.QRCodeObjRefExtractor"/>
+<fullyQualifiedTypeName name="org.cs27x.dropbox.DefaultFileManager"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="org.apache.commons.io.FileUtils"/>
+<fullyQualifiedTypeName name="org.cs27x.dropbox.DropboxCmd"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="org.cs27x.filewatcher.FileEvent"/>
+<fullyQualifiedTypeName name="java.nio.file.StandardWatchEventKinds"/>
+<fullyQualifiedTypeName name="org.cs27x.filewatcher.FileReactor"/>
+<fullyQualifiedTypeName name="org.cs27x.filewatcher.DropboxFileEventHandler"/>
 </qualifiedTypeNameHistroy>

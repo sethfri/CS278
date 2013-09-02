@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=SodaCloudSMSExampleClient/src&lt;com.example.sodacloudsmsexampleclient{Module.java[Module" modifiers="513" timestamp="1377490180742"/>
-<typeInfo handle="=SodaCloudSMSExampleClient/src&lt;com.example.sodacloudsmsexampleclient{ExternalObjRef.java[ExternalObjRef" modifiers="513" timestamp="1377485721145"/>
+<typeInfo handle="=Asgn2/src&lt;org.cs27x.dropbox{DropboxCmd.java[DropboxCmd" modifiers="1" timestamp="1378096099995"/>
+<typeInfo handle="=Asgn2/src&lt;org.cs27x.dropbox{DropboxCmdProcessor.java[DropboxCmdProcessor" modifiers="1" timestamp="1377998937712"/>
+<typeInfo handle="=Asgn2/src&lt;org.cs27x.filewatcher{FileStates.java[FileStates" modifiers="1" timestamp="1377998937774"/>
+<typeInfo handle="=Asgn2/src&lt;org.cs27x.dropbox{Dropbox.java[Dropbox" modifiers="1" timestamp="1377998937696"/>
 </typeInfoHistroy>
