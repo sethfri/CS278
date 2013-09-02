@@ -37,20 +37,8 @@ public class FileStatesTest {
 	}
 
 	@Test
-	public void testGetOrCreateState() throws IOException {
-		// Create state
-		FileState fileState = this.fileStates.getOrCreateState(this.testPath);
-		
-		assertEquals(-1, fileState.getSize());
-		assertNull(fileState.getLastModificationDate());
-		
-		// Get state
-		this.fileStates.insert(this.testPath);
-		
-		fileState = this.fileStates.getOrCreateState(this.testPath);
-		
-		assertEquals(fileState.getSize(), Files.size(this.testPath));
-		assertEquals(fileState.getLastModificationDate(), Files.getLastModifiedTime(this.testPath));
+	public void testGetOrCreateState() {
+		fail("Not yet implemented");
 	}
 
 	@Test
