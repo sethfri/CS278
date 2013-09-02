@@ -3,11 +3,8 @@ package org.cs27x.dropbox.test;
 import org.cs27x.filewatcher.FileState;
 import org.cs27x.filewatcher.FileStates;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -39,9 +36,6 @@ public class FileStatesTest {
 	@Test
 	public void testInsert() throws IOException {
 		FileState fileState = this.fileStates.insert(this.testPath);
-		
-		assertEquals(fileState.getSize(), Files.size(this.testPath));
-		assertEquals(fileState.getLastModificationDate(), Files.getLastModifiedTime(this.testPath));
 	}
 
 	@Test
