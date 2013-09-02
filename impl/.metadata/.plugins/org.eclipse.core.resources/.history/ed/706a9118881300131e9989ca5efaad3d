@@ -14,6 +14,15 @@ public class DropboxCmd implements Serializable {
 	private String path_;
 	private byte[] data_;
 	private OpCode opCode_;
+	
+	public DropboxCmd() {}
+	
+	public DropboxCmd(String from, String path, byte[] data, OpCode opCode) {
+		from_ = from;
+		path_ = path;
+		data_ = data;
+		opCode_ = opCode;
+	}
 
 	public String getFrom() {
 		return from_;
