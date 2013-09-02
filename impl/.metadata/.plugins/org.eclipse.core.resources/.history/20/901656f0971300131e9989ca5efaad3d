@@ -1,0 +1,71 @@
+package org.cs27x.dropbox.test;
+
+import org.cs27x.dropbox.HazelcastTransport;
+import org.cs27x.dropbox.DropboxProtocol;
+import org.cs27x.filewatcher.FileReactor;
+
+import static org.junit.Assert.*;
+
+import org.cs27x.dropbox.DropboxProtocol;
+import org.cs27x.dropbox.HazelcastTransport;
+import org.cs27x.filewatcher.FileReactor;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class DropboxTest {
+	
+	private HazelcastTransport transport;
+	private DropboxProtocol protocol;
+	private FileReactor reactor;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		transport = mock(HazelcastTransport.class);
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testDropbox() {
+		;
+	}
+
+	@Test
+	public void testConnect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testConnected() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDisconnect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAwaitConnect() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMain() {
+		fail("Not yet implemented");
+	}
+
+}
