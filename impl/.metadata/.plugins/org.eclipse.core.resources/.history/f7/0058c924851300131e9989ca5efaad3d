@@ -68,11 +68,4 @@ public class DefaultFileManagerTest {
 		
 		assertFalse(this.defaultFileManager.exists(this.testFilePath));
 	}
-	
-	@Test
-	public void testResolve() {
-		Path resolvedPath = this.defaultFileManager.resolve("writeTest.txt");
-		
-		assertEquals(resolvedPath, this.testFilePath);
-	}
 }

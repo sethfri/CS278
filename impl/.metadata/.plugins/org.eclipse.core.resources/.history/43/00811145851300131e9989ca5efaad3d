@@ -71,8 +71,8 @@ public class DefaultFileManagerTest {
 	
 	@Test
 	public void testResolve() {
-		Path resolvedPath = this.defaultFileManager.resolve("writeTest.txt");
+		Path resolvedPath = this.defaultFileManager.resolve("test");
 		
-		assertEquals(resolvedPath, this.testFilePath);
+		assertEquals(resolvedPath, this.watchedPath);
 	}
 }
