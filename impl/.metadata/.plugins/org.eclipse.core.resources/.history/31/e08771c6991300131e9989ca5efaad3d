@@ -19,6 +19,7 @@ import static org.mockito.Mockito.*;
 public class DropboxTest {
 	
 	private HazelcastTransport transport;
+	private DropboxProtocol protocol;
 	private FileReactor reactor;
 	
 	private Dropbox dropbox;
@@ -26,6 +27,7 @@ public class DropboxTest {
 	@Before
 	public void setUp() throws Exception {
 		this.transport = mock(HazelcastTransport.class);
+		this.protocol = mock(DropboxProtocol.class);
 		this.reactor = mock(FileReactor.class);
 		
 		Path rootPath = Paths.get("C:\\Users\\Seth Friedman\\Desktop\\Developer\\CS278\\impl\\Asgn2\\test");
@@ -43,7 +45,7 @@ public class DropboxTest {
 		
 		this.dropbox.connect(testServer);
 		
-		verify(this.transport).connect(eq(testServer));
+		verify(this.transport).connect(testServer);
 		verify(this.reactor).start();
 	}
 
@@ -63,11 +65,13 @@ public class DropboxTest {
 	}
 
 	@Test
-	public void testAwaitConnect() throws InterruptedException {
-		long timeout = 3000;
-		
-		this.dropbox.awaitConnect(timeout);
-		
-		verify(this.transport).awaitConnect(eq(timeout));
+	public void testAwaitConnect() {
+		fail("Not yet implemented");
 	}
+
+	@Test
+	public void testMain() {
+		fail("Not yet implemented");
+	}
+
 }
