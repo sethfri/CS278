@@ -61,4 +61,9 @@ public class FileStatesTest {
 		assertEquals(fileState.getLastModificationDate(), Files.getLastModifiedTime(this.testPath));
 	}
 
+	@Test
+	public void testFilter() {
+		fail("Not yet implemented");
+	}
+
 }
