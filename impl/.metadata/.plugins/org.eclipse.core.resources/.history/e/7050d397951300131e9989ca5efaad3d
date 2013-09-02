@@ -38,7 +38,6 @@ public class DefaultFileManagerTest {
 	@Test
 	public void testPathExistence() {
 		assertTrue(this.defaultFileManager.exists(this.watchedPath));
-		assertFalse(this.defaultFileManager.exists(Paths.get("fakePath")));
 	}
 	
 	@Test
