@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Asgn2/src/org/cs27x/dropbox/Dropbox.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.cs27x.dropbox.Dropbox"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="test 2001:0:4137:9e76:30fc:352f:f5bc:d776"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Asgn2"/>
+</launchConfiguration>

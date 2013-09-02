@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DefaultFileManagerTest" project="Asgn2" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="org.cs27x.dropbox.test.DefaultFileManagerTest" time="0.043">
+    <testcase name="testPathExistence" classname="org.cs27x.dropbox.test.DefaultFileManagerTest" time="0.004"/>
+    <testcase name="testWrite" classname="org.cs27x.dropbox.test.DefaultFileManagerTest" time="0.036"/>
+    <testcase name="testDeletion" classname="org.cs27x.dropbox.test.DefaultFileManagerTest" time="0.003"/>
+  </testsuite>
+</testrun>

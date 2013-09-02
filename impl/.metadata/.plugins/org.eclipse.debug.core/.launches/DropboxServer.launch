@@ -7,6 +7,6 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.cs27x.dropbox.Dropbox"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="~\Desktop\Developer\CS278\impl\Asgn2\test"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="test"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Asgn2"/>
 </launchConfiguration>

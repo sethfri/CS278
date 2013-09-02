@@ -45,21 +45,28 @@ public class DefaultFileManagerTest {
 		String stringToWrite = "Hello World";
 		this.defaultFileManager.write(this.testFilePath, stringToWrite.getBytes(), true);
 		
-		// Get the file contents of writeTest.txt, and test if it is equal to the
-		// `String` that should have been written into it.
+		// Get the file contents of writeTest.txt.		
 		File testFile = new File(this.testFilePath.toString());
 		
 		String stringFromFile = FileUtils.readFileToString(testFile);
 		
 		assertEquals(stringToWrite, stringFromFile);
 		
-		// Write the test string again without overriding, and then test to make sure that
-		// it was not written in again.
 		this.defaultFileManager.write(this.testFilePath, stringToWrite.getBytes(), false);
 		
-		String updatedStringFromFile = FileUtils.readFileToString(testFile);
+		String updatedStringFromFile = this.getFileContents(inputStream);
 		
 		assertEquals(updatedStringFromFile, stringFromFile);
+	}
+	
+	private String getFileContents(InputStream inputStream) throws IOException {
+		String contentsString = "";
+		
+		while (inputStream.available() != 0) {
+			contentsString += inputStream.read();
+		}
+		
+		return contentsString;
 	}
 	
 	@Test

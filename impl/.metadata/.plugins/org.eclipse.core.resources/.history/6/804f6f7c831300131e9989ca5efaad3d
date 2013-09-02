@@ -1,6 +1,5 @@
 package org.cs27x.dropbox.test;
 
-import org.apache.commons.io.FileUtils;
 import org.cs27x.dropbox.DefaultFileManager;
 
 import java.io.IOException;
@@ -45,21 +44,34 @@ public class DefaultFileManagerTest {
 		String stringToWrite = "Hello World";
 		this.defaultFileManager.write(this.testFilePath, stringToWrite.getBytes(), true);
 		
-		// Get the file contents of writeTest.txt, and test if it is equal to the
-		// `String` that should have been written into it.
-		File testFile = new File(this.testFilePath.toString());
+		// Get the file contents of writeTest.txt
+		InputStream inputStream = Files.newInputStream(this.watchedPath);
 		
-		String stringFromFile = FileUtils.readFileToString(testFile);
+		String stringFromFile = this.getFileContents(inputStream);
+		
+		inputStream.close();
 		
 		assertEquals(stringToWrite, stringFromFile);
 		
-		// Write the test string again without overriding, and then test to make sure that
-		// it was not written in again.
 		this.defaultFileManager.write(this.testFilePath, stringToWrite.getBytes(), false);
 		
-		String updatedStringFromFile = FileUtils.readFileToString(testFile);
+		inputStream = Files.newInputStream(this.watchedPath);
+		
+		String updatedStringFromFile = this.getFileContents(inputStream);
+		
+		inputStream.close();
 		
 		assertEquals(updatedStringFromFile, stringFromFile);
+	}
+	
+	private String getFileContents(InputStream inputStream) throws IOException {
+		String contentsString = "";
+		
+		while (inputStream.available() != 0) {
+			contentsString += inputStream.read();
+		}
+		
+		return contentsString;
 	}
 	
 	@Test

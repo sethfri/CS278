@@ -1,0 +1,65 @@
+package org.cs27x.dropbox.test;
+
+import org.cs27x.dropbox.DefaultFileManager;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class DefaultFileManagerTest {
+	
+	private Path watchedPath;
+	private DefaultFileManager defaultFileManager;
+
+	@Before
+	public void setUp() throws Exception {
+		this.watchedPath = Paths.get("~", "Desktop", "Developer", "CS278", "impl", "Asgn2", "test");
+		
+		if (!Files.exists(this.watchedPath)) {
+			new File(this.watchedPath.toString()).mkdir();
+		}
+		
+		this.defaultFileManager = new DefaultFileManager(this.watchedPath);
+	}
+
+	@Test
+	public void testPathExistence() {
+		assertTrue(this.defaultFileManager.exists(this.watchedPath));
+	}
+	
+	public void testWrite() throws IOException {
+		String stringToWrite = "Hello World";
+		this.defaultFileManager.write(this.watchedPath, stringToWrite.getBytes(), true);
+		
+		InputStream inputStream = Files.newInputStream(this.watchedPath);
+		
+		String stringFromFile = "";
+		
+		while (inputStream.available() != 0) {
+			stringFromFile += inputStream.read();
+		}
+		
+		assertEquals(stringToWrite, stringFromFile);
+		
+		// Write some more without overriding
+		// Make sure that nothing is overridden
+	}
+	
+	@Test
+	public void testDeletion() throws IOException {
+		this.defaultFileManager.delete(this.watchedPath);
+		
+		assertFalse(this.defaultFileManager.exists(this.watchedPath));
+	}
+}
