@@ -58,10 +58,7 @@ public class DropboxTest {
 
 	@Test
 	public void testDisconnect() {
-		this.dropbox.disconnect();
-		
-		verify(this.reactor).stop();
-		verify(this.transport).disconnect();
+		fail("Not yet implemented");
 	}
 
 	@Test
