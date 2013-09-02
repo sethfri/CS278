@@ -27,9 +27,7 @@ public class FileStatesTest {
 	}
 
 	@Test
-	public void testGetState() throws IOException {
-		this.fileStates.insert(this.testPath);
-		
+	public void testGetState() {
 		FileState fileState = this.fileStates.getState(this.testPath);
 		
 		assertEquals(fileState.getSize(), Files.size(this.testPath));
