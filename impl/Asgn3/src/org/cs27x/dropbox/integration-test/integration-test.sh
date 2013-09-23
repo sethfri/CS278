@@ -27,7 +27,21 @@ function test_add_files {
 
 # This function tests whether file updates are propagated to the appropriate places.
 function test_update_files {
-	
+	echo 'Update 1' > $HOST_PATH/update1.txt
+	if [ (cat $HOST_PATH/update1.txt) == (cat $CLIENT_PATH/update1.txt) ]
+	then
+		echo 'PASS: File update on host propagated to client.'
+	else
+		echo 'FAIL: File update on host did not propagate to client.'
+	fi
+
+	echo 'Update 2' > $CLIENT_PATH/update2.txt
+	if [ (cat $CLIENT_PATH/update2.txt) == (cat $HOST_PATH/update2.txt) ]
+	then
+		echo 'PASS: File update on client propagated to host.'
+	else
+		echo 'FAIL: File update on client did not propagate to host.'
+	fi
 }
 
 if [ -e $JAR_PATH ]
@@ -37,6 +51,13 @@ then
 	mkdir $HOST_PATH
 	mkdir $CLIENT_PATH
 
+	# Create files to be updated later in the update tests.
+	echo 'Update file 1' > $HOST_PATH/update1.txt
+	echo 'Update file 1' > $CLIENT_PATH/update1.txt
+	
+	echo 'Update file 2' > $HOST_PATH/update2.txt
+	echo 'Update file 2' > $CLIENT_PATH/update2.txt
+
 	# Start the Dropbox host
 	java -jar $JAR_PATH $HOST &> host$OUTPUT &
 	sleep 1
@@ -45,6 +66,9 @@ then
 	java -jar $JAR_PATH $CLIENT $(ipconfig getifaddr en1) &> client$OUTPUT &
 	sleep 1
 
+	test_add_files
+
+	test_update_files
 else
 	echo 'The file Dropbox.jar does not exist in the Asgn3 directory. Please create this file from the project and try again.'
 fi
