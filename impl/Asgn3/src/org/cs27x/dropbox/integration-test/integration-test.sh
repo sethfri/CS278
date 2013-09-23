@@ -44,6 +44,13 @@ function test_update_files {
 	fi
 }
 
+# This function cleans up unnecessary files once the tests have completed.
+function cleanup {
+	rm -rf $HOST_PATH
+	rm -rf $CLIENT_PATH
+	echo 'Tests completed.'
+}
+
 if [ -e $JAR_PATH ]
 then
 	# Create the files and directories necessary for the integration testing
@@ -69,6 +76,8 @@ then
 	test_add_files
 
 	test_update_files
+
+	cleanup
 else
 	echo 'The file Dropbox.jar does not exist in the Asgn3 directory. Please create this file from the project and try again.'
 fi
