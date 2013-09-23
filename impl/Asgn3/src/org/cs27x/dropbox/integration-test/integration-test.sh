@@ -7,7 +7,7 @@ CLIENT_PATH  = ./client
 # This function tests whether files added are propagated to the appropriate places.
 function test_add_files {
 	echo 'Test file 1' > $HOST_PATH/host.txt
-	if [ -e $CLIENT_PATH/client.txt ]
+	if [ -e $CLIENT_PATH/host.txt ]
 	then
 		echo 'PASS: File created on host propagated to client.'
 	else
@@ -17,7 +17,7 @@ function test_add_files {
 	rm $HOST_PATH/host.txt $CLIENT_PATH/client.txt
 
 	echo 'Test file 2' > $CLIENT_PATH/client.txt
-	if [ -e $HOST_PATH/host.txt ]
+	if [ -e $HOST_PATH/client.txt ]
 	then
 		echo 'PASS: File created on client propagated to host.'
 	else
