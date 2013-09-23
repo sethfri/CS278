@@ -44,6 +44,25 @@ function test_update_files {
 	fi
 }
 
+# This function tests whether deleted files are propagated to the appropriate places.
+function test_delete_files {
+	rm $HOST_PATH/host.txt
+	if [ -e $CLIENT_PATH/host.txt ]
+	then
+		echo 'FAIL: File deleted on host not propagated to client.'
+	else
+		echo 'PASS: File deleted on host propagated to client.'
+	fi
+
+	rm $CLIENT_PATH/client.txt
+	if [ -e $HOST_PATH/client.txt ]
+	then
+		echo 'FAIL: File deleted on client not propagated to host.'
+	else
+		echo 'PASS: File deleted on client propagated to host.'
+	fi
+}
+
 # This function cleans up unnecessary files once the tests have completed.
 function cleanup {
 	rm -rf $HOST_PATH
