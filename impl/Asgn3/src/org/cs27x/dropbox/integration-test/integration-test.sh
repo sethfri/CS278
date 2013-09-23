@@ -1,12 +1,15 @@
 # This is the main script for running integration tests for the Dropbox application.
 
-JAR_PATH = ../../../../Dropbox.jar
-HOST_PATH  = ./host
-CLIENT_PATH  = ./client
+JAR_PATH=../../../../Dropbox.jar
+HOST_PATH=./host
+CLIENT_PATH=./client
+WAIT_TIME=10 
 
 # This function tests whether files added are propagated to the appropriate places.
 function test_add_files {
 	echo 'Test file 1' > $HOST_PATH/host.txt
+	sleep $WAIT_TIME	
+
 	if [ -e $CLIENT_PATH/host.txt ]
 	then
 		echo 'PASS: File created on host propagated to client.'
@@ -14,9 +17,9 @@ function test_add_files {
 		echo 'FAIL: File created on host did not propagate to client.'
 	fi
 
-	rm $HOST_PATH/host.txt $CLIENT_PATH/client.txt
-
 	echo 'Test file 2' > $CLIENT_PATH/client.txt
+	sleep $WAIT_TIME	
+
 	if [ -e $HOST_PATH/client.txt ]
 	then
 		echo 'PASS: File created on client propagated to host.'
@@ -28,7 +31,9 @@ function test_add_files {
 # This function tests whether file updates are propagated to the appropriate places.
 function test_update_files {
 	echo 'Update 1' > $HOST_PATH/update1.txt
-	if [ (cat $HOST_PATH/update1.txt) == (cat $CLIENT_PATH/update1.txt) ]
+	sleep $WAIT_TIME
+
+	if [ $(cat $HOST_PATH/update1.txt) == $(cat $CLIENT_PATH/update1.txt) ]
 	then
 		echo 'PASS: File update on host propagated to client.'
 	else
@@ -36,7 +41,9 @@ function test_update_files {
 	fi
 
 	echo 'Update 2' > $CLIENT_PATH/update2.txt
-	if [ (cat $CLIENT_PATH/update2.txt) == (cat $HOST_PATH/update2.txt) ]
+	sleep $WAIT_TIME
+
+	if [ $(cat $CLIENT_PATH/update2.txt) == $(cat $HOST_PATH/update2.txt) ]
 	then
 		echo 'PASS: File update on client propagated to host.'
 	else
@@ -47,6 +54,8 @@ function test_update_files {
 # This function tests whether deleted files are propagated to the appropriate places.
 function test_delete_files {
 	rm $HOST_PATH/host.txt
+	sleep $WAIT_TIME
+
 	if [ -e $CLIENT_PATH/host.txt ]
 	then
 		echo 'FAIL: File deleted on host not propagated to client.'
@@ -55,6 +64,8 @@ function test_delete_files {
 	fi
 
 	rm $CLIENT_PATH/client.txt
+	sleep $WAIT_TIME
+
 	if [ -e $HOST_PATH/client.txt ]
 	then
 		echo 'FAIL: File deleted on client not propagated to host.'
@@ -95,6 +106,8 @@ then
 	test_add_files
 
 	test_update_files
+
+	test_delete_files
 
 	cleanup
 else
