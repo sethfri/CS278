@@ -3,7 +3,6 @@
 JAR_PATH = ../../../../Dropbox.jar
 HOST_PATH  = ./host
 CLIENT_PATH  = ./client
-OUTPUT_PATH = output.txt
 
 # This function tests whether files added are propagated to the appropriate places.
 function test_add_files {
@@ -28,6 +27,7 @@ function test_add_files {
 
 # This function tests whether file updates are propagated to the appropriate places.
 function test_update_files {
+	
 }
 
 if [ -e $JAR_PATH ]
@@ -36,11 +36,6 @@ then
 	echo 'Setting up the environment for integration testing...'
 	mkdir $HOST_PATH
 	mkdir $CLIENT_PATH
-	
-	if [ -e $OUTPUT_PATH ]
-	then
-		rm $OUTPUT_PATH
-	fi
 
 	# Start the Dropbox host
 	java -jar $JAR_PATH $HOST &> host$OUTPUT &
