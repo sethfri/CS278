@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BTAViewController : UIViewController
+@import CoreBluetooth;
+
+@interface BTAViewController : UIViewController <CBCentralManagerDelegate>
 
 @end
