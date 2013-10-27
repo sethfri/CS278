@@ -10,6 +10,6 @@
 
 @import CoreBluetooth;
 
-@interface BTAViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate>
+@interface BTATransferViewController : UIViewController <CBCentralManagerDelegate, CBPeripheralDelegate>
 
 @end

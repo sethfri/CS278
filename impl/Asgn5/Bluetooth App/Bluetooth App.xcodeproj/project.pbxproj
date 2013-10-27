@@ -14,7 +14,7 @@
 		2DCA1D3E181D9BAA003A85E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D3D181D9BAA003A85E5 /* main.m */; };
 		2DCA1D42181D9BAA003A85E5 /* BTAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D41181D9BAA003A85E5 /* BTAAppDelegate.m */; };
 		2DCA1D45181D9BAA003A85E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D43181D9BAA003A85E5 /* Main.storyboard */; };
-		2DCA1D48181D9BAA003A85E5 /* BTAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D47181D9BAA003A85E5 /* BTAViewController.m */; };
+		2DCA1D48181D9BAA003A85E5 /* BTATransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D47181D9BAA003A85E5 /* BTATransferViewController.m */; };
 		2DCA1D4A181D9BAA003A85E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D49181D9BAA003A85E5 /* Images.xcassets */; };
 		2DCA1D51181D9BAB003A85E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCA1D50181D9BAB003A85E5 /* XCTest.framework */; };
 		2DCA1D52181D9BAB003A85E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCA1D31181D9BAA003A85E5 /* Foundation.framework */; };
@@ -45,8 +45,8 @@
 		2DCA1D40181D9BAA003A85E5 /* BTAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAAppDelegate.h; sourceTree = "<group>"; };
 		2DCA1D41181D9BAA003A85E5 /* BTAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAAppDelegate.m; sourceTree = "<group>"; };
 		2DCA1D44181D9BAA003A85E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2DCA1D46181D9BAA003A85E5 /* BTAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAViewController.h; sourceTree = "<group>"; };
-		2DCA1D47181D9BAA003A85E5 /* BTAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAViewController.m; sourceTree = "<group>"; };
+		2DCA1D46181D9BAA003A85E5 /* BTATransferViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTATransferViewController.h; sourceTree = "<group>"; };
+		2DCA1D47181D9BAA003A85E5 /* BTATransferViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTATransferViewController.m; sourceTree = "<group>"; };
 		2DCA1D49181D9BAA003A85E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2DCA1D4F181D9BAB003A85E5 /* Bluetooth AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bluetooth AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCA1D50181D9BAB003A85E5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,8 +115,8 @@
 				2DCA1D40181D9BAA003A85E5 /* BTAAppDelegate.h */,
 				2DCA1D41181D9BAA003A85E5 /* BTAAppDelegate.m */,
 				2DCA1D43181D9BAA003A85E5 /* Main.storyboard */,
-				2DCA1D46181D9BAA003A85E5 /* BTAViewController.h */,
-				2DCA1D47181D9BAA003A85E5 /* BTAViewController.m */,
+				2DCA1D46181D9BAA003A85E5 /* BTATransferViewController.h */,
+				2DCA1D47181D9BAA003A85E5 /* BTATransferViewController.m */,
 				2DCA1D49181D9BAA003A85E5 /* Images.xcassets */,
 				2DCA1D38181D9BAA003A85E5 /* Supporting Files */,
 			);
@@ -251,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCA1D42181D9BAA003A85E5 /* BTAAppDelegate.m in Sources */,
-				2DCA1D48181D9BAA003A85E5 /* BTAViewController.m in Sources */,
+				2DCA1D48181D9BAA003A85E5 /* BTATransferViewController.m in Sources */,
 				2DCA1D3E181D9BAA003A85E5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Seth Friedman. All rights reserved.
 //
 
-#import "BTAViewController.h"
+#import "BTATransferViewController.h"
 
-@interface BTAViewController ()
+@interface BTATransferViewController ()
 
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBUUID *serviceUUID;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation BTAViewController
+@implementation BTATransferViewController
 
 #pragma mark - Custom Getter
 

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Transfer View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="BTAViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="BTATransferViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ci-od-C24"/>
                         <viewControllerLayoutGuide type="bottom" id="bpF-xz-gq0"/>
