@@ -8,9 +8,12 @@
 
 #import "BTATransferViewController.h"
 
+#import "BTACentralManagerDelegate.h"
+
 @interface BTATransferViewController ()
 
 @property (strong, nonatomic) CBCentralManager *centralManager;
+@property (strong, nonatomic) BTACentralManagerDelegate *centralManagerDelegate;
 @property (strong, nonatomic) CBUUID *serviceUUID;
 @property (strong, nonatomic) CBUUID *characteristicUUID;
 
@@ -22,6 +25,15 @@
 @implementation BTATransferViewController
 
 #pragma mark - Custom Getter
+
+- (BTACentralManagerDelegate *)centralManagerDelegate {
+    if (!_centralManagerDelegate) {
+        _centralManagerDelegate = [BTACentralManagerDelegate centralManagerDelegateWithPeripheralDelegate:self
+                                                                                           andServiceUUID:self.serviceUUID];
+    }
+    
+    return _centralManagerDelegate;
+}
 
 - (CBUUID *)serviceUUID {
     if (!_serviceUUID) {
@@ -44,7 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self
+    self.centralManager = [[CBCentralManager alloc] initWithDelegate:self.centralManagerDelegate
                                                                queue:nil
                                                              options:nil];
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
@@ -81,72 +93,6 @@
 - (IBAction)receivePhotoTapped:(UIButton *)sender {
     [self.centralManager scanForPeripheralsWithServices:@[self.serviceUUID]
                                                 options:nil];
-}
-
-#pragma mark - Central Manager Delegate
-
-- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    switch (central.state) {
-        case CBCentralManagerStateUnsupported: {
-            UIAlertView *unsupportedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unsupported"
-                                                                           message:@"Bluetooth is not supported on this device."
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"OK"
-                                                                 otherButtonTitles:nil];
-            [unsupportedAlertView show];
-            break;
-        }
-            
-        case CBCentralManagerStateUnauthorized: {
-            UIAlertView *unauthorizedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unauthorized"
-                                                                            message:@"Bluetooth App is not authorized to use this device's Bluetooth. Please visit Settings and make sure that it is authorized."
-                                                                           delegate:self
-                                                                  cancelButtonTitle:@"OK"
-                                                                  otherButtonTitles:nil];
-            [unauthorizedAlertView show];
-            break;
-        }
-            
-        case CBCentralManagerStatePoweredOff: {
-            UIAlertView *poweredOffAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Off"
-                                                                          message:@"Bluetooth is currently powered off. Please open the Control Center and turn on Bluetooth."
-                                                                         delegate:self
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles:nil];
-            [poweredOffAlertView show];
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
-
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    // There is only one possible peripheral we could have found, since this is not a mainstream app. So, we will use
-    // the trivial implementation of stopping the search as soon as we've found a single peripheral advertising the
-    // service UUID.
-    
-    [self.centralManager stopScan];
-    [self.centralManager connectPeripheral:peripheral
-                                   options:nil];
-}
-
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    peripheral.delegate = self;
-    
-    [peripheral discoverServices:@[self.serviceUUID]];
-}
-
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error {
-    NSLog(@"Error: %@", error);
-    
-    UIAlertView *failToConnectAlertView = [[UIAlertView alloc] initWithTitle:@"Failed to Connect"
-                                                                     message:@"The app failed to connect with another device. Please try again."
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"OK"
-                                                           otherButtonTitles:nil];
-    [failToConnectAlertView show];
 }
 
 #pragma mark - Peripheral Delegate

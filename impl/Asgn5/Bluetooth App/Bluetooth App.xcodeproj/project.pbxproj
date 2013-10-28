@@ -21,6 +21,7 @@
 		2DCA1D53181D9BAB003A85E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCA1D35181D9BAA003A85E5 /* UIKit.framework */; };
 		2DCA1D5B181D9BAB003A85E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D59181D9BAB003A85E5 /* InfoPlist.strings */; };
 		2DCA1D5D181D9BAB003A85E5 /* Bluetooth_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D5C181D9BAB003A85E5 /* Bluetooth_AppTests.m */; };
+		2DCA1D68181DF631003A85E5 /* BTACentralManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		2DCA1D58181D9BAB003A85E5 /* Bluetooth AppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bluetooth AppTests-Info.plist"; sourceTree = "<group>"; };
 		2DCA1D5A181D9BAB003A85E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DCA1D5C181D9BAB003A85E5 /* Bluetooth_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bluetooth_AppTests.m; sourceTree = "<group>"; };
+		2DCA1D66181DF631003A85E5 /* BTACentralManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTACentralManagerDelegate.h; sourceTree = "<group>"; };
+		2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTACentralManagerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				2DCA1D43181D9BAA003A85E5 /* Main.storyboard */,
 				2DCA1D46181D9BAA003A85E5 /* BTATransferViewController.h */,
 				2DCA1D47181D9BAA003A85E5 /* BTATransferViewController.m */,
+				2DCA1D66181DF631003A85E5 /* BTACentralManagerDelegate.h */,
+				2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */,
 				2DCA1D49181D9BAA003A85E5 /* Images.xcassets */,
 				2DCA1D38181D9BAA003A85E5 /* Supporting Files */,
 			);
@@ -250,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCA1D68181DF631003A85E5 /* BTACentralManagerDelegate.m in Sources */,
 				2DCA1D42181D9BAA003A85E5 /* BTAAppDelegate.m in Sources */,
 				2DCA1D48181D9BAA003A85E5 /* BTATransferViewController.m in Sources */,
 				2DCA1D3E181D9BAA003A85E5 /* main.m in Sources */,
