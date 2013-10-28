@@ -14,6 +14,9 @@
 @property (strong, nonatomic) CBUUID *serviceUUID;
 @property (strong, nonatomic) CBUUID *characteristicUUID;
 
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+@property (strong, nonatomic) CBCharacteristic *imageCharacteristic;
+
 @end
 
 @implementation BTATransferViewController
@@ -30,8 +33,7 @@
 
 - (CBUUID *)characteristicUUID {
     if (!_characteristicUUID) {
-        // TODO - Get an actual characteistic UUID.
-        _characteristicUUID = nil;
+        _characteristicUUID = [CBUUID UUIDWithString:@"0B51155F-C244-4A81-94F4-B411D830C06F"];
     }
     
     return _characteristicUUID;
@@ -45,6 +47,9 @@
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self
                                                                queue:nil
                                                              options:nil];
+    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
+                                                                     queue:nil
+                                                                   options:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +61,21 @@
 #pragma mark - IB Actions
 
 - (IBAction)sendPhotoTapped:(UIButton *)sender {
+    // Get the photo
+    
+    NSData *imageData = nil;
+    
+    // Possibly need to set the value to nil since it may change ("Build Your Tree of Services and Characteristics")
+    CBMutableCharacteristic *imageCharacteristic = [[CBMutableCharacteristic alloc] initWithType:self.characteristicUUID
+                                                                                      properties:CBCharacteristicPropertyRead
+                                                                                           value:imageData
+                                                                                     permissions:CBAttributePermissionsReadable];
+    self.imageCharacteristic = imageCharacteristic;
+    CBMutableService *imageService = [[CBMutableService alloc] initWithType:self.serviceUUID
+                                                                    primary:YES];
+    imageService.characteristics = @[imageCharacteristic];
+    
+    [self.peripheralManager addService:imageService];
 }
 
 - (IBAction)receivePhotoTapped:(UIButton *)sender {
@@ -129,6 +149,8 @@
     [failToConnectAlertView show];
 }
 
+#pragma mark - Peripheral Delegate
+
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error {
     // We know that the peripheral will only publish a single service
     CBService *imageService = peripheral.services[0];
@@ -143,8 +165,77 @@
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error {
+    [self.centralManager cancelPeripheralConnection:peripheral];
+    
     NSData *imageData = characteristic.value;
     UIImage *image = [UIImage imageWithData:imageData];
+    // Do something with the image.
+}
+
+#pragma mark - Peripheral Manager Delegate
+
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
+    switch (peripheral.state) {
+        case CBPeripheralManagerStateUnsupported: {
+            UIAlertView *unsupportedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unsupported"
+                                                                           message:@"Bluetooth is not supported on this device."
+                                                                          delegate:self
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil];
+            [unsupportedAlertView show];
+            break;
+        }
+            
+        case CBPeripheralManagerStateUnauthorized: {
+            UIAlertView *unauthorizedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unauthorized"
+                                                                            message:@"Bluetooth App is not authorized to use this device's Bluetooth. Please visit Settings and make sure that it is authorized."
+                                                                           delegate:self
+                                                                  cancelButtonTitle:@"OK"
+                                                                  otherButtonTitles:nil];
+            [unauthorizedAlertView show];
+            break;
+        }
+            
+        case CBPeripheralManagerStatePoweredOff: {
+            UIAlertView *poweredOffAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Off"
+                                                                          message:@"Bluetooth is currently powered off. Please open the Control Center and turn on Bluetooth."
+                                                                         delegate:self
+                                                                cancelButtonTitle:@"OK"
+                                                                otherButtonTitles:nil];
+            [poweredOffAlertView show];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error {
+    if (error) {
+        NSLog(@"Error publishing service: %@", error);
+    } else {
+        [peripheral startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey: @[service.UUID] }];
+    }
+}
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error {
+    if (error) {
+        NSLog(@"Error advertising service: %@", error);
+    }
+}
+
+- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {
+    if ([request.characteristic.UUID isEqual:self.imageCharacteristic.UUID]) {
+        if (request.offset > [self.imageCharacteristic.value length]) {
+            [peripheral respondToRequest:request
+                              withResult:CBATTErrorInvalidOffset];
+        } else {
+            request.value = [self.imageCharacteristic.value subdataWithRange:NSMakeRange(request.offset, [self.imageCharacteristic.value length] - request.offset)];
+            [peripheral respondToRequest:request
+                              withResult:CBATTErrorSuccess];
+        }
+    }
 }
 
 @end
