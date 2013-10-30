@@ -10,7 +10,7 @@
 
 #import "BTACentralManagerDelegate.h"
 
-@interface BTATransferViewController ()
+@interface BTATransferViewController () <UINavigationControllerDelegate>
 
 @property (strong, nonatomic) BTACentralManagerDelegate *centralManagerDelegate;
 @property (strong, nonatomic) CBUUID *serviceUUID;
@@ -72,21 +72,13 @@
 #pragma mark - IB Actions
 
 - (IBAction)sendPhotoTapped:(UIButton *)sender {
-    // Get the photo
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
     
-    NSData *imageData = nil;
-    
-    // Possibly need to set the value to nil since it may change ("Build Your Tree of Services and Characteristics")
-    CBMutableCharacteristic *imageCharacteristic = [[CBMutableCharacteristic alloc] initWithType:self.characteristicUUID
-                                                                                      properties:CBCharacteristicPropertyRead
-                                                                                           value:imageData
-                                                                                     permissions:CBAttributePermissionsReadable];
-    self.imageCharacteristic = imageCharacteristic;
-    CBMutableService *imageService = [[CBMutableService alloc] initWithType:self.serviceUUID
-                                                                    primary:YES];
-    imageService.characteristics = @[imageCharacteristic];
-    
-    [self.peripheralManager addService:imageService];
+    [self presentViewController:imagePickerController
+                       animated:YES
+                     completion:nil];
 }
 
 - (IBAction)receivePhotoTapped:(UIButton *)sender {
@@ -146,6 +138,29 @@
                               withResult:CBATTErrorSuccess];
         }
     }
+}
+
+#pragma mark - Image Picker Controller Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 // Possibly need to set the value to nil since it may change (See "Build Your Tree of Services and Characteristics")
+                                 CBMutableCharacteristic *imageCharacteristic = [[CBMutableCharacteristic alloc] initWithType:self.characteristicUUID
+                                                                                                                   properties:CBCharacteristicPropertyRead
+                                                                                                                        value:imageData
+                                                                                                                  permissions:CBAttributePermissionsReadable];
+                                 self.imageCharacteristic = imageCharacteristic;
+                                 CBMutableService *imageService = [[CBMutableService alloc] initWithType:self.serviceUUID
+                                                                                                 primary:YES];
+                                 imageService.characteristics = @[imageCharacteristic];
+                                 
+                                 [self.peripheralManager addService:imageService];
+                             }];
 }
 
 @end
