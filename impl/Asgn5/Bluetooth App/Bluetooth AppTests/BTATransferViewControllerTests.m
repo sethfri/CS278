@@ -50,6 +50,22 @@
     [super tearDown];
 }
 
+/** This test currently fails because I am unsure of the correct way to mock a `UIPickerViewController`. */
+- (void)testSendPhoto {
+    id mockPeripheralManager = [OCMockObject mockForClass:[CBPeripheralManager class]];
+    [[mockPeripheralManager expect] addService:[OCMArg any]];
+    
+    id mockImagePickerController = [OCMockObject mockForClass:[UIImagePickerController class]];
+    
+    [self.transferViewController presentViewController:mockImagePickerController
+                                              animated:YES
+                                            completion:nil];
+    [self.transferViewController imagePickerController:mockImagePickerController
+                         didFinishPickingMediaWithInfo:nil];
+    
+    [mockPeripheralManager verify];
+}
+
 - (void)testReceivePhoto {
     id mockCentralManager = [OCMockObject mockForClass:[CBCentralManager class]];
     [[mockCentralManager expect] scanForPeripheralsWithServices:@[self.serviceUUID]
