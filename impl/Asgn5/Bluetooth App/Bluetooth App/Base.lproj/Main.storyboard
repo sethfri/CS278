@@ -48,6 +48,10 @@
                             <constraint firstAttribute="centerY" secondItem="kqB-OY-Ue5" secondAttribute="centerY" id="qPT-5O-7Lf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="receivePhotoButton" destination="kqB-OY-Ue5" id="Dha-Cg-9l6"/>
+                        <outlet property="sendPhotoButton" destination="ab5-hV-YeE" id="ReA-dt-jkC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

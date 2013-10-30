@@ -12,7 +12,6 @@
 
 @interface BTATransferViewController ()
 
-@property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) BTACentralManagerDelegate *centralManagerDelegate;
 @property (strong, nonatomic) CBUUID *serviceUUID;
 @property (strong, nonatomic) CBUUID *characteristicUUID;
@@ -120,42 +119,7 @@
 
 #pragma mark - Peripheral Manager Delegate
 
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
-    switch (peripheral.state) {
-        case CBPeripheralManagerStateUnsupported: {
-            UIAlertView *unsupportedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unsupported"
-                                                                           message:@"Bluetooth is not supported on this device."
-                                                                          delegate:self
-                                                                 cancelButtonTitle:@"OK"
-                                                                 otherButtonTitles:nil];
-            [unsupportedAlertView show];
-            break;
-        }
-            
-        case CBPeripheralManagerStateUnauthorized: {
-            UIAlertView *unauthorizedAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Unauthorized"
-                                                                            message:@"Bluetooth App is not authorized to use this device's Bluetooth. Please visit Settings and make sure that it is authorized."
-                                                                           delegate:self
-                                                                  cancelButtonTitle:@"OK"
-                                                                  otherButtonTitles:nil];
-            [unauthorizedAlertView show];
-            break;
-        }
-            
-        case CBPeripheralManagerStatePoweredOff: {
-            UIAlertView *poweredOffAlertView = [[UIAlertView alloc] initWithTitle:@"Bluetooth Off"
-                                                                          message:@"Bluetooth is currently powered off. Please open the Control Center and turn on Bluetooth."
-                                                                         delegate:self
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles:nil];
-            [poweredOffAlertView show];
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
+- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {}
 
 - (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error {
     if (error) {
