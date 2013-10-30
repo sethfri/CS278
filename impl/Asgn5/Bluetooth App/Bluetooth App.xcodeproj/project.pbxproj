@@ -21,6 +21,8 @@
 		2DCA1D53181D9BAB003A85E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DCA1D35181D9BAA003A85E5 /* UIKit.framework */; };
 		2DCA1D5B181D9BAB003A85E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D59181D9BAB003A85E5 /* InfoPlist.strings */; };
 		2DCA1D68181DF631003A85E5 /* BTACentralManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */; };
+		2DCA67D61820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA67D51820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m */; };
+		2DCA67D71820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA67D51820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m */; };
 		2DD4456A1820920900800DA8 /* BTATransferViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD445691820920900800DA8 /* BTATransferViewControllerTests.m */; };
 		2DE6B2201820B44500F27430 /* BTAImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6B21F1820B44500F27430 /* BTAImageViewController.m */; };
 		713A194BE5B348CD870602F0 /* libPods-Bluetooth AppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B6D0605C348F2A613F6A7 /* libPods-Bluetooth AppTests.a */; };
@@ -57,6 +59,8 @@
 		2DCA1D5A181D9BAB003A85E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2DCA1D66181DF631003A85E5 /* BTACentralManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTACentralManagerDelegate.h; sourceTree = "<group>"; };
 		2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTACentralManagerDelegate.m; sourceTree = "<group>"; };
+		2DCA67D41820CB8F004B0C0D /* BTAPeripheralManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTAPeripheralManagerDelegate.h; sourceTree = "<group>"; };
+		2DCA67D51820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTAPeripheralManagerDelegate.m; sourceTree = "<group>"; };
 		2DD445691820920900800DA8 /* BTATransferViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTATransferViewControllerTests.m; sourceTree = "<group>"; };
 		2DE6B21E1820B44500F27430 /* BTAImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTAImageViewController.h; sourceTree = "<group>"; };
 		2DE6B21F1820B44500F27430 /* BTAImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTAImageViewController.m; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */,
 				2DE6B21E1820B44500F27430 /* BTAImageViewController.h */,
 				2DE6B21F1820B44500F27430 /* BTAImageViewController.m */,
+				2DCA67D41820CB8F004B0C0D /* BTAPeripheralManagerDelegate.h */,
+				2DCA67D51820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m */,
 				2DCA1D49181D9BAA003A85E5 /* Images.xcassets */,
 				2DCA1D38181D9BAA003A85E5 /* Supporting Files */,
 			);
@@ -305,6 +311,7 @@
 				2DCA1D42181D9BAA003A85E5 /* BTAAppDelegate.m in Sources */,
 				2DE6B2201820B44500F27430 /* BTAImageViewController.m in Sources */,
 				2DCA1D48181D9BAA003A85E5 /* BTATransferViewController.m in Sources */,
+				2DCA67D61820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m in Sources */,
 				2DCA1D3E181D9BAA003A85E5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DCA67D71820CB8F004B0C0D /* BTAPeripheralManagerDelegate.m in Sources */,
 				2DD4456A1820920900800DA8 /* BTATransferViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

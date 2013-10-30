@@ -9,6 +9,7 @@
 #import "BTATransferViewController.h"
 
 #import "BTACentralManagerDelegate.h"
+#import "BTAPeripheralManagerDelegate.h"
 #import "BTAImageViewController.h"
 
 @interface BTATransferViewController () <UINavigationControllerDelegate>
@@ -17,8 +18,7 @@
 @property (strong, nonatomic) CBUUID *serviceUUID;
 @property (strong, nonatomic) CBUUID *characteristicUUID;
 
-@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
-@property (strong, nonatomic) CBCharacteristic *imageCharacteristic;
+@property (strong, nonatomic) BTAPeripheralManagerDelegate *peripheralManagerDelegate;
 
 @property (strong, nonatomic) UIImage *image;
 
@@ -53,6 +53,14 @@
     return _characteristicUUID;
 }
 
+- (BTAPeripheralManagerDelegate *)peripheralManagerDelegate {
+    if (!_peripheralManagerDelegate) {
+        _peripheralManagerDelegate = [BTAPeripheralManagerDelegate peripheralManagerDelegateWithCharacteristic:nil];
+    }
+    
+    return _peripheralManagerDelegate;
+}
+
 #pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
@@ -61,7 +69,7 @@
     self.centralManager = [[CBCentralManager alloc] initWithDelegate:self.centralManagerDelegate
                                                                queue:nil
                                                              options:nil];
-    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
+    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self.peripheralManagerDelegate
                                                                      queue:nil
                                                                    options:nil];
 }
@@ -123,37 +131,6 @@
                               sender:self];
 }
 
-#pragma mark - Peripheral Manager Delegate
-
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {}
-
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didAddService:(CBService *)service error:(NSError *)error {
-    if (error) {
-        NSLog(@"Error publishing service: %@", error);
-    } else {
-        [peripheral startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey: @[service.UUID] }];
-    }
-}
-
-- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error {
-    if (error) {
-        NSLog(@"Error advertising service: %@", error);
-    }
-}
-
-- (void)peripheralManager:(CBPeripheralManager *)peripheral didReceiveReadRequest:(CBATTRequest *)request {
-    if ([request.characteristic.UUID isEqual:self.imageCharacteristic.UUID]) {
-        if (request.offset > [self.imageCharacteristic.value length]) {
-            [peripheral respondToRequest:request
-                              withResult:CBATTErrorInvalidOffset];
-        } else {
-            request.value = [self.imageCharacteristic.value subdataWithRange:NSMakeRange(request.offset, [self.imageCharacteristic.value length] - request.offset)];
-            [peripheral respondToRequest:request
-                              withResult:CBATTErrorSuccess];
-        }
-    }
-}
-
 #pragma mark - Image Picker Controller Delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -168,7 +145,7 @@
                                                                                                                    properties:CBCharacteristicPropertyRead
                                                                                                                         value:imageData
                                                                                                                   permissions:CBAttributePermissionsReadable];
-                                 self.imageCharacteristic = imageCharacteristic;
+                                 self.peripheralManagerDelegate.characteristic = imageCharacteristic;
                                  CBMutableService *imageService = [[CBMutableService alloc] initWithType:self.serviceUUID
                                                                                                  primary:YES];
                                  imageService.characteristics = @[imageCharacteristic];
