@@ -90,4 +90,19 @@
     [mockPeripheral verify];
 }
 
+- (void)testPeripheralDidDiscoverCharacteristicsForService {
+    id mockService = [OCMockObject mockForClass:[CBService class]];
+    [[mockService expect] characteristics];
+    
+    id mockPeripheral = [OCMockObject mockForClass:[CBPeripheral class]];
+    [[mockPeripheral expect] readValueForCharacteristic:[OCMArg any]];
+    
+    [self.transferViewController peripheral:mockPeripheral
+       didDiscoverCharacteristicsForService:mockService
+                                      error:nil];
+    
+    [mockService verify];
+    [mockPeripheral verify];
+}
+
 @end
