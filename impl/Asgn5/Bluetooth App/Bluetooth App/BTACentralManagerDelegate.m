@@ -17,7 +17,7 @@
 
 @implementation BTACentralManagerDelegate
 
-#pragma mark - NSObject
+#pragma mark - Designated Initializer
 
 - (instancetype)initWithPeripheralDelegate:(id<CBPeripheralDelegate>)peripheralDelegate andServiceUUID:(CBUUID *)serviceUUID {
     self = [super init];
@@ -29,6 +29,8 @@
     
     return self;
 }
+
+#pragma mark - Factory Method
 
 + (instancetype)centralManagerDelegateWithPeripheralDelegate:(id<CBPeripheralDelegate>)peripheralDelegate andServiceUUID:(CBUUID *)serviceUUID {
     return [[self alloc] initWithPeripheralDelegate:peripheralDelegate
