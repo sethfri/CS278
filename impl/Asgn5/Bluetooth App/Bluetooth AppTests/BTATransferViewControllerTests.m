@@ -105,4 +105,24 @@
     [mockPeripheral verify];
 }
 
+- (void)testPeripheralDidUpdateValueForCharacteristic {
+    id mockPeripheral = [OCMockObject mockForClass:[CBPeripheral class]];
+    
+    id mockCentralManager = [OCMockObject mockForClass:[CBCentralManager class]];
+    [[mockCentralManager expect] cancelPeripheralConnection:mockPeripheral];
+    
+    self.transferViewController.centralManager = mockCentralManager;
+    
+    id mockTransferViewController = [OCMockObject partialMockForObject:self.transferViewController];
+    [[mockTransferViewController expect] performSegueWithIdentifier:@"PresentImage"
+                                                             sender:[OCMArg any]];
+    
+    [self.transferViewController peripheral:mockPeripheral
+            didUpdateValueForCharacteristic:nil
+                                      error:nil];
+    
+    [mockCentralManager verify];
+    [mockTransferViewController verify];
+}
+
 @end
