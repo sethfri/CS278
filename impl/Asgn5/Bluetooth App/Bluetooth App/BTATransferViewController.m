@@ -9,6 +9,7 @@
 #import "BTATransferViewController.h"
 
 #import "BTACentralManagerDelegate.h"
+#import "BTAImageViewController.h"
 
 @interface BTATransferViewController () <UINavigationControllerDelegate>
 
@@ -18,6 +19,8 @@
 
 @property (strong, nonatomic) CBPeripheralManager *peripheralManager;
 @property (strong, nonatomic) CBCharacteristic *imageCharacteristic;
+
+@property (strong, nonatomic) UIImage *image;
 
 @end
 
@@ -69,6 +72,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PresentImage"]) {
+        BTAImageViewController *imageViewController = segue.destinationViewController;
+        imageViewController.image = self.image;
+    }
+}
+
 #pragma mark - IB Actions
 
 - (IBAction)sendPhotoTapped:(UIButton *)sender {
@@ -105,8 +117,10 @@
     [self.centralManager cancelPeripheralConnection:peripheral];
     
     NSData *imageData = characteristic.value;
-    UIImage *image = [UIImage imageWithData:imageData];
-    // Do something with the image.
+    self.image = [UIImage imageWithData:imageData];
+    
+    [self performSegueWithIdentifier:@"PresentImage"
+                              sender:self];
 }
 
 #pragma mark - Peripheral Manager Delegate

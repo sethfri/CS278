@@ -51,11 +51,39 @@
                     <connections>
                         <outlet property="receivePhotoButton" destination="kqB-OY-Ue5" id="Dha-Cg-9l6"/>
                         <outlet property="sendPhotoButton" destination="ab5-hV-YeE" id="ReA-dt-jkC"/>
+                        <segue destination="r0v-Wg-0Mm" kind="modal" identifier="PresentImage" id="DPC-Dn-P1Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="634" y="100"/>
+            <point key="canvasLocation" x="303" y="122"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="lUR-mh-6Pg">
+            <objects>
+                <viewController id="r0v-Wg-0Mm" customClass="BTAImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u9Y-Jd-AXh"/>
+                        <viewControllerLayoutGuide type="bottom" id="I89-zl-VH9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nd0-9b-Iwr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thM-P5-ehG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="thM-P5-ehG" id="Fny-yU-aWX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hl3-0J-abH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="122"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

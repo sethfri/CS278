@@ -22,6 +22,7 @@
 		2DCA1D5B181D9BAB003A85E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2DCA1D59181D9BAB003A85E5 /* InfoPlist.strings */; };
 		2DCA1D68181DF631003A85E5 /* BTACentralManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */; };
 		2DD4456A1820920900800DA8 /* BTATransferViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD445691820920900800DA8 /* BTATransferViewControllerTests.m */; };
+		2DE6B2201820B44500F27430 /* BTAImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6B21F1820B44500F27430 /* BTAImageViewController.m */; };
 		713A194BE5B348CD870602F0 /* libPods-Bluetooth AppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B6D0605C348F2A613F6A7 /* libPods-Bluetooth AppTests.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		2DCA1D66181DF631003A85E5 /* BTACentralManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTACentralManagerDelegate.h; sourceTree = "<group>"; };
 		2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTACentralManagerDelegate.m; sourceTree = "<group>"; };
 		2DD445691820920900800DA8 /* BTATransferViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTATransferViewControllerTests.m; sourceTree = "<group>"; };
+		2DE6B21E1820B44500F27430 /* BTAImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTAImageViewController.h; sourceTree = "<group>"; };
+		2DE6B21F1820B44500F27430 /* BTAImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTAImageViewController.m; sourceTree = "<group>"; };
 		342F6811E6974052A67949B4 /* Pods-Bluetooth AppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bluetooth AppTests.xcconfig"; path = "Pods/Pods-Bluetooth AppTests.xcconfig"; sourceTree = "<group>"; };
 		A51B6D0605C348F2A613F6A7 /* libPods-Bluetooth AppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bluetooth AppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,6 +131,8 @@
 				2DCA1D47181D9BAA003A85E5 /* BTATransferViewController.m */,
 				2DCA1D66181DF631003A85E5 /* BTACentralManagerDelegate.h */,
 				2DCA1D67181DF631003A85E5 /* BTACentralManagerDelegate.m */,
+				2DE6B21E1820B44500F27430 /* BTAImageViewController.h */,
+				2DE6B21F1820B44500F27430 /* BTAImageViewController.m */,
 				2DCA1D49181D9BAA003A85E5 /* Images.xcassets */,
 				2DCA1D38181D9BAA003A85E5 /* Supporting Files */,
 			);
@@ -298,6 +303,7 @@
 			files = (
 				2DCA1D68181DF631003A85E5 /* BTACentralManagerDelegate.m in Sources */,
 				2DCA1D42181D9BAA003A85E5 /* BTAAppDelegate.m in Sources */,
+				2DE6B2201820B44500F27430 /* BTAImageViewController.m in Sources */,
 				2DCA1D48181D9BAA003A85E5 /* BTATransferViewController.m in Sources */,
 				2DCA1D3E181D9BAA003A85E5 /* main.m in Sources */,
 			);
