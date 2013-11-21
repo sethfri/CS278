@@ -14,13 +14,14 @@
 		2D4D7236183E284400FB2FC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7235183E284400FB2FC0 /* main.m */; };
 		2D4D723A183E284400FB2FC0 /* FPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7239183E284400FB2FC0 /* FPAppDelegate.m */; };
 		2D4D723D183E284400FB2FC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D723B183E284400FB2FC0 /* Main.storyboard */; };
-		2D4D7240183E284400FB2FC0 /* FPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D723F183E284400FB2FC0 /* FPViewController.m */; };
+		2D4D7240183E284400FB2FC0 /* FPMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D723F183E284400FB2FC0 /* FPMapViewController.m */; };
 		2D4D7242183E284400FB2FC0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D7241183E284400FB2FC0 /* Images.xcassets */; };
 		2D4D7249183E284400FB2FC0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D7248183E284400FB2FC0 /* XCTest.framework */; };
 		2D4D724A183E284400FB2FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D7229183E284400FB2FC0 /* Foundation.framework */; };
 		2D4D724B183E284400FB2FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722D183E284400FB2FC0 /* UIKit.framework */; };
 		2D4D7253183E284500FB2FC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D7251183E284500FB2FC0 /* InfoPlist.strings */; };
 		2D4D7255183E284500FB2FC0 /* Final_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */; };
+		2D4D725F183E2CF400FB2FC0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D725E183E2CF400FB2FC0 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +46,15 @@
 		2D4D7238183E284400FB2FC0 /* FPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPAppDelegate.h; sourceTree = "<group>"; };
 		2D4D7239183E284400FB2FC0 /* FPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPAppDelegate.m; sourceTree = "<group>"; };
 		2D4D723C183E284400FB2FC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2D4D723E183E284400FB2FC0 /* FPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPViewController.h; sourceTree = "<group>"; };
-		2D4D723F183E284400FB2FC0 /* FPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPViewController.m; sourceTree = "<group>"; };
+		2D4D723E183E284400FB2FC0 /* FPMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPMapViewController.h; sourceTree = "<group>"; };
+		2D4D723F183E284400FB2FC0 /* FPMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPMapViewController.m; sourceTree = "<group>"; };
 		2D4D7241183E284400FB2FC0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D4D7247183E284400FB2FC0 /* Final ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Final ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4D7248183E284400FB2FC0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2D4D7250183E284500FB2FC0 /* Final ProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Final ProjectTests-Info.plist"; sourceTree = "<group>"; };
 		2D4D7252183E284500FB2FC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Final_ProjectTests.m; sourceTree = "<group>"; };
+		2D4D725E183E2CF400FB2FC0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4D725F183E2CF400FB2FC0 /* MapKit.framework in Frameworks */,
 				2D4D722C183E284400FB2FC0 /* CoreGraphics.framework in Frameworks */,
 				2D4D722E183E284400FB2FC0 /* UIKit.framework in Frameworks */,
 				2D4D722A183E284400FB2FC0 /* Foundation.framework in Frameworks */,
@@ -101,6 +104,7 @@
 		2D4D7228183E284400FB2FC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D4D725E183E2CF400FB2FC0 /* MapKit.framework */,
 				2D4D7229183E284400FB2FC0 /* Foundation.framework */,
 				2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */,
 				2D4D722D183E284400FB2FC0 /* UIKit.framework */,
@@ -115,8 +119,8 @@
 				2D4D7238183E284400FB2FC0 /* FPAppDelegate.h */,
 				2D4D7239183E284400FB2FC0 /* FPAppDelegate.m */,
 				2D4D723B183E284400FB2FC0 /* Main.storyboard */,
-				2D4D723E183E284400FB2FC0 /* FPViewController.h */,
-				2D4D723F183E284400FB2FC0 /* FPViewController.m */,
+				2D4D723E183E284400FB2FC0 /* FPMapViewController.h */,
+				2D4D723F183E284400FB2FC0 /* FPMapViewController.m */,
 				2D4D7241183E284400FB2FC0 /* Images.xcassets */,
 				2D4D7230183E284400FB2FC0 /* Supporting Files */,
 			);
@@ -252,7 +256,7 @@
 			files = (
 				2D4D723A183E284400FB2FC0 /* FPAppDelegate.m in Sources */,
 				2D4D7236183E284400FB2FC0 /* main.m in Sources */,
-				2D4D7240183E284400FB2FC0 /* FPViewController.m in Sources */,
+				2D4D7240183E284400FB2FC0 /* FPMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
