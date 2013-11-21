@@ -7,6 +7,7 @@
 //
 
 #import "FPMapViewController.h"
+#import "FPItem.h"
 
 @import MapKit;
 
@@ -15,9 +16,13 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) BOOL mapHasBeenCenteredAroundUser;
 
+@property (strong, nonatomic) NSArray *items;
+
 @end
 
 @implementation FPMapViewController
+
+#pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
