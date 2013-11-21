@@ -8,6 +8,7 @@
 
 #import "FPMapViewController.h"
 #import "FPItem.h"
+#import "FPItemDetailViewController.h"
 
 @import MapKit;
 
@@ -76,6 +77,22 @@
     if ([segue.identifier isEqualToString:@"PresentList"]) {
         UINavigationController *destinationNavigationController = segue.destinationViewController;
         [[destinationNavigationController.viewControllers firstObject] setItems:self.items];
+    } else if ([segue.identifier isEqualToString:@"PushItemDetail"]) {
+        MKAnnotationView *view = sender;
+        MKPointAnnotation *annotation = view.annotation;
+        CLLocationCoordinate2D coordinate = annotation.coordinate;
+        
+        FPItem *selectedItem;
+        
+        for (FPItem *item in self.items) {
+            if (item.location.latitude == coordinate.latitude && item.location.longitude == coordinate.longitude) {
+                selectedItem = item;
+                break;
+            }
+        }
+        
+        FPItemDetailViewController *detailViewController = segue.destinationViewController;
+        detailViewController.item = selectedItem;
     }
 }
 
@@ -93,6 +110,11 @@
         
         self.mapHasBeenCenteredAroundUser = YES;
     }
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    [self performSegueWithIdentifier:@"PushItemDetail"
+                              sender:view];
 }
 
 @end

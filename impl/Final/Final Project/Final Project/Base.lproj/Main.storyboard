@@ -35,11 +35,56 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="HVL-ES-mDP" id="MgH-ki-i9q"/>
+                        <segue destination="zZs-M3-oTY" kind="push" identifier="PushItemDetail" id="5SD-br-oXK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="65"/>
+        </scene>
+        <!--Item Detail View Controller-->
+        <scene sceneID="jTK-wB-yJq">
+            <objects>
+                <viewController id="zZs-M3-oTY" customClass="FPItemDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BhW-Tl-OcH"/>
+                        <viewControllerLayoutGuide type="bottom" id="BpH-uQ-R13"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zbf-Nj-75Y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cce-Tg-j1Z">
+                                <rect key="frame" x="20" y="81" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="gs1-Cg-uGC">
+                                <rect key="frame" x="20" y="110" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cce-Tg-j1Z" firstAttribute="leading" secondItem="zbf-Nj-75Y" secondAttribute="leading" constant="20" id="99N-Uj-Ra6"/>
+                            <constraint firstItem="cce-Tg-j1Z" firstAttribute="top" secondItem="BhW-Tl-OcH" secondAttribute="bottom" constant="17" id="V1p-Mi-qos"/>
+                            <constraint firstAttribute="trailing" secondItem="gs1-Cg-uGC" secondAttribute="trailing" constant="20" id="geO-E8-F1B"/>
+                            <constraint firstItem="gs1-Cg-uGC" firstAttribute="leading" secondItem="zbf-Nj-75Y" secondAttribute="leading" constant="20" id="ha4-Eh-jvv"/>
+                            <constraint firstItem="gs1-Cg-uGC" firstAttribute="top" secondItem="cce-Tg-j1Z" secondAttribute="bottom" constant="8" id="iQM-9r-Qjy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qQz-AN-ePu"/>
+                    <connections>
+                        <outlet property="deadlineLabel" destination="cce-Tg-j1Z" id="dUk-JD-umY"/>
+                        <outlet property="detailsLabel" destination="gs1-Cg-uGC" id="m14-Uv-f6x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVn-w5-OA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="726"/>
         </scene>
         <!--List Table View Controller - List-->
         <scene sceneID="aRb-H0-yEo">
@@ -91,7 +136,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceO-y6-xF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="EJW-nW-ra8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1754" y="65"/>
+            <point key="canvasLocation" x="1729" y="65"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HWb-Cm-sQv">
@@ -127,7 +172,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNx-hE-Y0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="65"/>
+            <point key="canvasLocation" x="1307" y="65"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
