@@ -26,18 +26,18 @@
 
 - (NSArray *)items {
     if (!_items) {
-        _items = @[[FPItem itemWithName:@"Install internet at M. King's house"
-                               deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
-                               location:CLLocationCoordinate2DMake(36.139483, -86.8331)
-                             andDetails:@"Install cable box and router."],
-                   [FPItem itemWithName:@"Install television at A. Brown's house"
+        _items = @[[FPItem itemWithName:@"Install Internet"
                                deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
+                               location:CLLocationCoordinate2DMake(36.139483, -86.8331)
+                             andDetails:@"Install cable box and router at M. King's house."],
+                   [FPItem itemWithName:@"Install Television"
+                               deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
                                location:CLLocationCoordinate2DMake(36.157233, -86.795583)
-                             andDetails:@"Needs tv receiver box. Wiring may be necessary."],
-                   [FPItem itemWithName:@"Examine switch box on the buildings at 1901 18th ave S"
+                             andDetails:@"A. Brown's house. Needs tv receiver box. Wiring may be necessary."],
+                   [FPItem itemWithName:@"Examine Switch Box"
                                deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
                                location:CLLocationCoordinate2DMake(36.133533, -86.760833)
-                             andDetails:@"Several residents report intermittent outages. Test switching box to ensure problem is further up the line."]];
+                             andDetails:@"Several residents at 1901 18th Ave. S report intermittent outages. Test switching box to ensure problem is further up the line."]];
     }
     
     return _items;
@@ -69,6 +69,17 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PresentList"]) {
+        UINavigationController *destinationNavigationController = segue.destinationViewController;
+        [[destinationNavigationController.viewControllers firstObject] setItems:self.items];
+    }
+}
+
+- (IBAction)listTableViewControllerDidFinish:(UIStoryboardSegue *)segue {}
 
 #pragma mark - Map View Delegate
 
