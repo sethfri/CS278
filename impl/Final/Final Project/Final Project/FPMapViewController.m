@@ -22,6 +22,27 @@
 
 @implementation FPMapViewController
 
+#pragma mark - Custom Getter
+
+- (NSArray *)items {
+    if (!_items) {
+        _items = @[[FPItem itemWithName:@"Install internet at M. King's house"
+                               deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
+                               location:CLLocationCoordinate2DMake(36.139483, -86.8331)
+                             andDetails:@"Install cable box and router."],
+                   [FPItem itemWithName:@"Install television at A. Brown's house"
+                               deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
+                               location:CLLocationCoordinate2DMake(36.157233, -86.795583)
+                             andDetails:@"Needs tv receiver box. Wiring may be necessary."],
+                   [FPItem itemWithName:@"Examine switch box on the buildings at 1901 18th ave S"
+                               deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
+                               location:CLLocationCoordinate2DMake(36.133533, -86.760833)
+                             andDetails:@"Several residents report intermittent outages. Test switching box to ensure problem is further up the line."]];
+    }
+    
+    return _items;
+}
+
 #pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
@@ -29,30 +50,18 @@
     
     self.mapHasBeenCenteredAroundUser = NO;
     
-    MKPointAnnotation *firstAnnotation = [[MKPointAnnotation alloc] init];
-    firstAnnotation.coordinate = CLLocationCoordinate2DMake(36.139483, -86.8331);
-    MKPinAnnotationView *firstPin = [[MKPinAnnotationView alloc] initWithAnnotation:firstAnnotation
-                                                                    reuseIdentifier:@"PinAnnotation"];
+    NSMutableArray *pins = [NSMutableArray arrayWithCapacity:[self.items count]];
     
-    MKPointAnnotation *secondAnnotation = [[MKPointAnnotation alloc] init];
-    secondAnnotation.coordinate = CLLocationCoordinate2DMake(36.157233, -86.795583);
-    MKPinAnnotationView *secondPin = [[MKPinAnnotationView alloc] initWithAnnotation:secondAnnotation
-                                                                    reuseIdentifier:@"PinAnnotation"];
+    for (FPItem *item in self.items) {
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.coordinate = item.location;
+        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                                   reuseIdentifier:@"PinAnnotation"];
+        
+        [pins addObject:pin];
+    }
     
-    MKPointAnnotation *thirdAnnotation = [[MKPointAnnotation alloc] init];
-    thirdAnnotation.coordinate = CLLocationCoordinate2DMake(36.133533, -86.760833);
-    MKPinAnnotationView *thirdPin = [[MKPinAnnotationView alloc] initWithAnnotation:thirdAnnotation
-                                                                    reuseIdentifier:@"PinAnnotation"];
-    
-    MKPointAnnotation *fourthAnnotation = [[MKPointAnnotation alloc] init];
-    fourthAnnotation.coordinate = CLLocationCoordinate2DMake(36.11155, -86.7973);
-    MKPinAnnotationView *fourthPin = [[MKPinAnnotationView alloc] initWithAnnotation:fourthAnnotation
-                                                                    reuseIdentifier:@"PinAnnotation"];
-    
-    [self.mapView addAnnotations:@[firstPin,
-                                   secondPin,
-                                   thirdPin,
-                                   fourthPin]];
+    [self.mapView addAnnotations:[pins copy]];
 }
 
 - (void)didReceiveMemoryWarning
