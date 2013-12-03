@@ -9,10 +9,11 @@
 #import "FPMapViewController.h"
 #import "FPItem.h"
 #import "FPItemDetailViewController.h"
+#import "FPListTableViewControllerDelegate.h"
 
 @import MapKit;
 
-@interface FPMapViewController () <MKMapViewDelegate>
+@interface FPMapViewController () <MKMapViewDelegate, FPListTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) BOOL mapHasBeenCenteredAroundUser;
@@ -76,7 +77,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"PresentList"]) {
         UINavigationController *destinationNavigationController = segue.destinationViewController;
-        [[destinationNavigationController.viewControllers firstObject] setItems:self.items];
+        id destinationViewController = [destinationNavigationController.viewControllers firstObject];
+        
+        [destinationViewController setItems:self.items];
+        [destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"PushItemDetail"]) {
         MKAnnotationView *view = sender;
         MKPointAnnotation *annotation = view.annotation;
@@ -96,7 +100,9 @@
     }
 }
 
-- (IBAction)listTableViewControllerDidFinish:(UIStoryboardSegue *)segue {}
+- (IBAction)listTableViewControllerDone:(UIStoryboardSegue *)segue {}
+
+- (IBAction)listTableViewControllerSelected:(UIStoryboardSegue *)segue {}
 
 #pragma mark - Map View Delegate
 
@@ -115,6 +121,16 @@
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     [self performSegueWithIdentifier:@"PushItemDetail"
                               sender:view];
+}
+
+#pragma mark - List Table View Controller Delegate
+
+- (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectItem:(FPItem *)item {
+    CLLocationCoordinate2D itemCoordinate = item.location;
+    MKCoordinateSpan regionSpan = MKCoordinateSpanMake(0.2, 0.2);
+    
+    MKCoordinateRegion region = MKCoordinateRegionMake(itemCoordinate, regionSpan);
+    self.mapView.region = region;
 }
 
 @end

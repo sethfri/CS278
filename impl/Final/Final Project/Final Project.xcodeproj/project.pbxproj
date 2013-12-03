@@ -64,6 +64,7 @@
 		2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPListTableViewController.m; sourceTree = "<group>"; };
 		2D4D7266183E400F00FB2FC0 /* FPItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPItemDetailViewController.h; sourceTree = "<group>"; };
 		2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPItemDetailViewController.m; sourceTree = "<group>"; };
+		2D4D7269183E767800FB2FC0 /* FPListTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPListTableViewControllerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +139,7 @@
 				2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */,
 				2D4D7266183E400F00FB2FC0 /* FPItemDetailViewController.h */,
 				2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */,
+				2D4D7269183E767800FB2FC0 /* FPListTableViewControllerDelegate.h */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";

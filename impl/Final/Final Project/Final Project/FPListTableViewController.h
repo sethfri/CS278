@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPListTableViewControllerDelegate.h"
 
 @interface FPListTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *items;
+@property (weak, nonatomic) id<FPListTableViewControllerDelegate> delegate;
 
 @end

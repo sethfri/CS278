@@ -118,6 +118,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindSelected" unwindAction="listTableViewControllerSelected:" id="uNR-0K-7dB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -128,7 +131,7 @@
                     <navigationItem key="navigationItem" title="List" id="AKm-1S-xFH">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="S03-r7-fhh">
                             <connections>
-                                <segue destination="EJW-nW-ra8" kind="unwind" unwindAction="listTableViewControllerDidFinish:" id="knB-If-I79"/>
+                                <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindDone" unwindAction="listTableViewControllerDone:" id="LyA-Oa-FLd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
