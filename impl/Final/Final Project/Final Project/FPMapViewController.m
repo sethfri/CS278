@@ -94,8 +94,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    [self performSegueWithIdentifier:@"PushItemDetail"
-                              sender:view];
+    if ([view isKindOfClass:[MKPinAnnotationView class]]) {
+        [self performSegueWithIdentifier:@"PushItemDetail"
+                                  sender:view];
+    }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
