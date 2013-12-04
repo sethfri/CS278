@@ -16,7 +16,6 @@
 @interface FPMapViewController () <MKMapViewDelegate, FPListTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic) BOOL mapHasBeenCenteredAroundUser;
 
 @property (strong, nonatomic) NSArray *annotations;
 
@@ -49,8 +48,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.mapHasBeenCenteredAroundUser = NO;
     
     [self.mapView addAnnotations:self.annotations];
 }
@@ -86,15 +83,14 @@
 #pragma mark - Map View Delegate
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    if (!self.mapHasBeenCenteredAroundUser) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         CLLocationCoordinate2D userLocationCoordinate = userLocation.location.coordinate;
         MKCoordinateSpan regionSpan = MKCoordinateSpanMake(0.2, 0.2);
         
         MKCoordinateRegion region = MKCoordinateRegionMake(userLocationCoordinate, regionSpan);
         self.mapView.region = region;
-        
-        self.mapHasBeenCenteredAroundUser = YES;
-    }
+    });
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
