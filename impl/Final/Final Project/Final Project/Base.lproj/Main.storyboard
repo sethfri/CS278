@@ -30,7 +30,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="je9-5y-8UP">
-                        <barButtonItem key="rightBarButtonItem" title="List" id="73j-Yv-vJq">
+                        <barButtonItem key="leftBarButtonItem" title="List" id="73j-Yv-vJq">
                             <connections>
                                 <segue destination="X3j-TF-O4J" kind="modal" identifier="PresentList" id="SQa-7a-2Nx"/>
                             </connections>
