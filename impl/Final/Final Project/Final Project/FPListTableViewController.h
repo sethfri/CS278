@@ -11,7 +11,7 @@
 
 @interface FPListTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *items;
+@property (copy, nonatomic) NSArray *annotations;
 @property (weak, nonatomic) id<FPListTableViewControllerDelegate> delegate;
 
 @end

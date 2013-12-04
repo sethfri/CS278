@@ -7,7 +7,7 @@
 //
 
 #import "FPItemDetailViewController.h"
-#import "FPItem.h"
+#import "FPPointAnnotation.h"
 
 @interface FPItemDetailViewController ()
 
@@ -36,9 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    self.title = self.item.name;
-    self.deadlineLabel.text = [self.dateFormatter stringFromDate:self.item.deadline];
-    self.detailsLabel.text = self.item.details;
+    self.title = self.annotation.title;
+    self.deadlineLabel.text = [self.dateFormatter stringFromDate:self.annotation.deadline];
+    self.detailsLabel.text = self.annotation.details;
 }
 
 - (void)didReceiveMemoryWarning

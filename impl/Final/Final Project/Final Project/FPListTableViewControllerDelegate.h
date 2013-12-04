@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @class FPListTableViewController;
-@class FPItem;
+@class FPPointAnnotation;
 
 @protocol FPListTableViewControllerDelegate <NSObject>
 
-- (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectItem:(FPItem *)item;
+- (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectAnnotation:(FPPointAnnotation *)annotation;
 
 @end

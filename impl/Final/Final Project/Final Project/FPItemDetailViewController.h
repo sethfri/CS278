@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class FPItem;
+@class FPPointAnnotation;
 
 @interface FPItemDetailViewController : UIViewController
 
-@property (strong, nonatomic) FPItem *item;
+@property (strong, nonatomic) FPPointAnnotation *annotation;
 
 @end

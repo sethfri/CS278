@@ -7,7 +7,7 @@
 //
 
 #import "FPListTableViewController.h"
-#import "FPItem.h"
+#import "FPPointAnnotation.h"
 
 @interface FPListTableViewController ()
 
@@ -43,23 +43,23 @@
 #pragma mark - Table View Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.items count];
+    return [self.annotations count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ItemCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    FPItem *item = self.items[indexPath.row];
-    cell.textLabel.text = item.name;
-    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:item.deadline];
+    FPPointAnnotation *annotation = self.annotations[indexPath.row];
+    cell.textLabel.text = annotation.title;
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:annotation.deadline];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.delegate listTableViewController:self
-                             didSelectItem:self.items[indexPath.row]];
+                       didSelectAnnotation:self.annotations[indexPath.row]];
 }
 
 @end

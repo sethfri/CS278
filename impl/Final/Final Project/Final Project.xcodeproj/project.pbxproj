@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D4479EE184F46D700E04FA8 /* FPPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */; };
 		2D4D722A183E284400FB2FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D7229183E284400FB2FC0 /* Foundation.framework */; };
 		2D4D722C183E284400FB2FC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */; };
 		2D4D722E183E284400FB2FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722D183E284400FB2FC0 /* UIKit.framework */; };
@@ -22,7 +23,6 @@
 		2D4D7253183E284500FB2FC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D7251183E284500FB2FC0 /* InfoPlist.strings */; };
 		2D4D7255183E284500FB2FC0 /* Final_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */; };
 		2D4D725F183E2CF400FB2FC0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D725E183E2CF400FB2FC0 /* MapKit.framework */; };
-		2D4D7262183E357900FB2FC0 /* FPItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7261183E357900FB2FC0 /* FPItem.m */; };
 		2D4D7265183E3AC400FB2FC0 /* FPListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */; };
 		2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D4479EC184F46D700E04FA8 /* FPPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPointAnnotation.h; sourceTree = "<group>"; };
+		2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPointAnnotation.m; sourceTree = "<group>"; };
 		2D4D7226183E284400FB2FC0 /* Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4D7229183E284400FB2FC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,8 +60,6 @@
 		2D4D7252183E284500FB2FC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Final_ProjectTests.m; sourceTree = "<group>"; };
 		2D4D725E183E2CF400FB2FC0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		2D4D7260183E357900FB2FC0 /* FPItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPItem.h; sourceTree = "<group>"; };
-		2D4D7261183E357900FB2FC0 /* FPItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPItem.m; sourceTree = "<group>"; };
 		2D4D7263183E3AC400FB2FC0 /* FPListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPListTableViewController.h; sourceTree = "<group>"; };
 		2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPListTableViewController.m; sourceTree = "<group>"; };
 		2D4D7266183E400F00FB2FC0 /* FPItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPItemDetailViewController.h; sourceTree = "<group>"; };
@@ -131,8 +131,6 @@
 				2D4D723B183E284400FB2FC0 /* Main.storyboard */,
 				2D4D723E183E284400FB2FC0 /* FPMapViewController.h */,
 				2D4D723F183E284400FB2FC0 /* FPMapViewController.m */,
-				2D4D7260183E357900FB2FC0 /* FPItem.h */,
-				2D4D7261183E357900FB2FC0 /* FPItem.m */,
 				2D4D7241183E284400FB2FC0 /* Images.xcassets */,
 				2D4D7230183E284400FB2FC0 /* Supporting Files */,
 				2D4D7263183E3AC400FB2FC0 /* FPListTableViewController.h */,
@@ -140,6 +138,8 @@
 				2D4D7266183E400F00FB2FC0 /* FPItemDetailViewController.h */,
 				2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */,
 				2D4D7269183E767800FB2FC0 /* FPListTableViewControllerDelegate.h */,
+				2D4479EC184F46D700E04FA8 /* FPPointAnnotation.h */,
+				2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -271,12 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D4D7262183E357900FB2FC0 /* FPItem.m in Sources */,
 				2D4D723A183E284400FB2FC0 /* FPAppDelegate.m in Sources */,
 				2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */,
 				2D4D7236183E284400FB2FC0 /* main.m in Sources */,
 				2D4D7240183E284400FB2FC0 /* FPMapViewController.m in Sources */,
 				2D4D7265183E3AC400FB2FC0 /* FPListTableViewController.m in Sources */,
+				2D4479EE184F46D700E04FA8 /* FPPointAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +485,7 @@
 				2D4D725A183E284500FB2FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D4D725B183E284500FB2FC0 /* Build configuration list for PBXNativeTarget "Final ProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +494,7 @@
 				2D4D725D183E284500FB2FC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

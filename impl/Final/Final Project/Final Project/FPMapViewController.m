@@ -7,7 +7,7 @@
 //
 
 #import "FPMapViewController.h"
-#import "FPItem.h"
+#import "FPPointAnnotation.h"
 #import "FPItemDetailViewController.h"
 #import "FPListTableViewControllerDelegate.h"
 
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) BOOL mapHasBeenCenteredAroundUser;
 
-@property (strong, nonatomic) NSArray *items;
+@property (strong, nonatomic) NSArray *annotations;
 
 @end
 
@@ -26,23 +26,23 @@
 
 #pragma mark - Custom Getter
 
-- (NSArray *)items {
-    if (!_items) {
-        _items = @[[FPItem itemWithName:@"Install Internet"
-                               deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
-                               location:CLLocationCoordinate2DMake(36.139483, -86.8331)
-                             andDetails:@"Install cable box and router at M. King's house."],
-                   [FPItem itemWithName:@"Install Television"
-                               deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
-                               location:CLLocationCoordinate2DMake(36.157233, -86.795583)
-                             andDetails:@"A. Brown's house. Needs tv receiver box. Wiring may be necessary."],
-                   [FPItem itemWithName:@"Examine Switch Box"
-                               deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
-                               location:CLLocationCoordinate2DMake(36.133533, -86.760833)
-                             andDetails:@"Several residents at 1901 18th Ave. S report intermittent outages. Test switching box to ensure problem is further up the line."]];
+- (NSArray *)annotations {
+    if (!_annotations) {
+        _annotations = @[[FPPointAnnotation pointAnnotationWithTitle:@"Install Internet"
+                                                          coordinate:CLLocationCoordinate2DMake(36.139483, -86.8331)
+                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
+                                                          andDetails:@"Install cable box and router at M. King's house."],
+                         [FPPointAnnotation pointAnnotationWithTitle:@"Install Television"
+                                                          coordinate:CLLocationCoordinate2DMake(36.157233, -86.795583)
+                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
+                                                          andDetails:@"A. Brown's house. Needs tv receiver box. Wiring may be necessary."],
+                         [FPPointAnnotation pointAnnotationWithTitle:@"Examine Switch Box"
+                                                          coordinate:CLLocationCoordinate2DMake(36.133533, -86.760833)
+                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
+                                                          andDetails:@"Several residents at 1901 18th Ave. S report intermittent outages. Test switching box to ensure problem is further up the line."]];
     }
     
-    return _items;
+    return _annotations;
 }
 
 #pragma mark - View Controller Lifecycle
@@ -52,18 +52,7 @@
     
     self.mapHasBeenCenteredAroundUser = NO;
     
-    NSMutableArray *pins = [NSMutableArray arrayWithCapacity:[self.items count]];
-    
-    for (FPItem *item in self.items) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        annotation.coordinate = item.location;
-        MKPinAnnotationView *pin = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
-                                                                   reuseIdentifier:@"PinAnnotation"];
-        
-        [pins addObject:pin];
-    }
-    
-    [self.mapView addAnnotations:[pins copy]];
+    [self.mapView addAnnotations:self.annotations];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,24 +68,14 @@
         UINavigationController *destinationNavigationController = segue.destinationViewController;
         id destinationViewController = [destinationNavigationController.viewControllers firstObject];
         
-        [destinationViewController setItems:self.items];
+        [destinationViewController setAnnotations:self.annotations];
         [destinationViewController setDelegate:self];
     } else if ([segue.identifier isEqualToString:@"PushItemDetail"]) {
-        MKAnnotationView *view = sender;
-        MKPointAnnotation *annotation = view.annotation;
-        CLLocationCoordinate2D coordinate = annotation.coordinate;
-        
-        FPItem *selectedItem;
-        
-        for (FPItem *item in self.items) {
-            if (item.location.latitude == coordinate.latitude && item.location.longitude == coordinate.longitude) {
-                selectedItem = item;
-                break;
-            }
-        }
+        MKPinAnnotationView *selectedView = sender;
+        FPPointAnnotation *selectedAnnotation = selectedView.annotation;
         
         FPItemDetailViewController *detailViewController = segue.destinationViewController;
-        detailViewController.item = selectedItem;
+        detailViewController.annotation = selectedAnnotation;
     }
 }
 
@@ -123,10 +102,27 @@
                               sender:view];
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *reuseIdentifier = @"PinAnnotationView";
+    
+    MKAnnotationView *annotationView;
+    
+    if ([annotation isKindOfClass:[FPPointAnnotation class]]) {
+        annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
+        
+        if (!annotationView) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
+                                                             reuseIdentifier:reuseIdentifier];
+        }
+    }
+    
+    return annotationView;
+}
+
 #pragma mark - List Table View Controller Delegate
 
-- (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectItem:(FPItem *)item {
-    CLLocationCoordinate2D itemCoordinate = item.location;
+- (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectAnnotation:(FPPointAnnotation *)annotation {
+    CLLocationCoordinate2D itemCoordinate = annotation.coordinate;
     MKCoordinateSpan regionSpan = MKCoordinateSpanMake(0.2, 0.2);
     
     MKCoordinateRegion region = MKCoordinateRegionMake(itemCoordinate, regionSpan);
