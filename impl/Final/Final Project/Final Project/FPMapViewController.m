@@ -10,20 +10,22 @@
 #import "FPPointAnnotation.h"
 #import "FPItemDetailViewController.h"
 #import "FPListTableViewControllerDelegate.h"
+#import "FPMapViewDelegate.h"
 
 @import MapKit;
 
-@interface FPMapViewController () <MKMapViewDelegate, FPListTableViewControllerDelegate>
+@interface FPMapViewController () <FPListTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (strong, nonatomic) NSArray *annotations;
+@property (strong, nonatomic) FPMapViewDelegate *mapViewDelegate;
 
 @end
 
 @implementation FPMapViewController
 
-#pragma mark - Custom Getter
+#pragma mark - Custom Getters
 
 - (NSArray *)annotations {
     if (!_annotations) {
@@ -44,11 +46,25 @@
     return _annotations;
 }
 
+- (FPMapViewDelegate *)mapViewDelegate {
+    if (!_mapViewDelegate) {
+        __weak typeof(self)weakSelf = self;
+        
+        _mapViewDelegate = [FPMapViewDelegate mapViewDelegateWithPinSelectedBlock:^(MKAnnotationView *annotationView) {
+            [weakSelf performSegueWithIdentifier:@"PushItemDetail"
+                                          sender:annotationView];
+        }];
+    }
+    
+    return _mapViewDelegate;
+}
+
 #pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.mapView.delegate = self.mapViewDelegate;
     [self.mapView addAnnotations:self.annotations];
 }
 
@@ -79,43 +95,6 @@
 - (IBAction)listTableViewControllerDone:(UIStoryboardSegue *)segue {}
 
 - (IBAction)listTableViewControllerSelected:(UIStoryboardSegue *)segue {}
-
-#pragma mark - Map View Delegate
-
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        CLLocationCoordinate2D userLocationCoordinate = userLocation.location.coordinate;
-        MKCoordinateSpan regionSpan = MKCoordinateSpanMake(0.2, 0.2);
-        
-        MKCoordinateRegion region = MKCoordinateRegionMake(userLocationCoordinate, regionSpan);
-        self.mapView.region = region;
-    });
-}
-
-- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-    if ([view isKindOfClass:[MKPinAnnotationView class]]) {
-        [self performSegueWithIdentifier:@"PushItemDetail"
-                                  sender:view];
-    }
-}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *reuseIdentifier = @"PinAnnotationView";
-    
-    MKAnnotationView *annotationView;
-    
-    if ([annotation isKindOfClass:[FPPointAnnotation class]]) {
-        annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
-        
-        if (!annotationView) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation
-                                                             reuseIdentifier:reuseIdentifier];
-        }
-    }
-    
-    return annotationView;
-}
 
 #pragma mark - List Table View Controller Delegate
 

@@ -12,10 +12,10 @@
 
 @interface FPPointAnnotation : NSObject <MKAnnotation>
 
-@property (copy, nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (strong, nonatomic, readonly) NSDate *deadline;
-@property (copy, nonatomic, readonly) NSString *details;
+@property (nonatomic, readonly, copy) NSString *details;
 
 - (instancetype)initWithTitle:(NSString *)title coordinate:(CLLocationCoordinate2D)coordinate deadline:(NSDate *)deadline andDetails:(NSString *)details;
 
