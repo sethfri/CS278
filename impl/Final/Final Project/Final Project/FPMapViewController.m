@@ -53,6 +53,8 @@
         _mapViewDelegate = [FPMapViewDelegate mapViewDelegateWithPinSelectedBlock:^(MKAnnotationView *annotationView) {
             [weakSelf performSegueWithIdentifier:@"PushItemDetail"
                                           sender:annotationView];
+            [weakSelf.mapView deselectAnnotation:annotationView.annotation
+                                        animated:NO];
         }];
     }
     
