@@ -32,6 +32,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"deadline" ascending:YES];
+    self.annotations = [self.annotations sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
 
 - (void)didReceiveMemoryWarning
