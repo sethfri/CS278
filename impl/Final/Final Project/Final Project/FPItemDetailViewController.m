@@ -47,4 +47,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"UnwindItemDetail"]) {
+        [self.delegate itemDetailViewController:self
+                     didCompletePointAnnotation:self.annotation];
+    }
+}
+
 @end
