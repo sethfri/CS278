@@ -10,10 +10,12 @@
 
 static NSInteger const kDeadlineSection = 1;
 
-@interface FPTaskCreationTableViewController ()
+@interface FPTaskCreationTableViewController () <UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *deadlineTableViewCell;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+
+@property (nonatomic) BOOL datePickerIsDisplayed;
 
 @end
 
@@ -22,6 +24,7 @@ static NSInteger const kDeadlineSection = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.datePickerIsDisplayed = NO;
     self.datePicker.minimumDate = [NSDate date];
 }
 
@@ -35,8 +38,12 @@ static NSInteger const kDeadlineSection = 1;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == kDeadlineSection) {
-        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:kDeadlineSection]]
+        [self.tableView endEditing:YES];
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1
+                                                               inSection:kDeadlineSection]]
                          withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deselectRowAtIndexPath:indexPath
+                                 animated:YES];
     }
 }
 
@@ -47,9 +54,37 @@ static NSInteger const kDeadlineSection = 1;
     
     if (section == kDeadlineSection && self.deadlineTableViewCell.selected) {
         numberOfRows = 2;
+        self.datePickerIsDisplayed = YES;
     }
     
     return numberOfRows;
+}
+
+#pragma mark - Text Field Delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self removeDatePickerIfNecessary];
+    
+    return YES;
+}
+
+#pragma mark - Text View Delegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    [self removeDatePickerIfNecessary];
+    
+    return YES;
+}
+
+#pragma mark - Helper Methods
+
+- (void)removeDatePickerIfNecessary {
+    if (self.datePickerIsDisplayed) {
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1
+                                                                    inSection:kDeadlineSection]]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.datePickerIsDisplayed = NO;
+    }
 }
 
 /*
