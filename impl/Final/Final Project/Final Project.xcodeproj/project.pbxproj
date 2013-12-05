@@ -23,11 +23,13 @@
 		2D4D724A183E284400FB2FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D7229183E284400FB2FC0 /* Foundation.framework */; };
 		2D4D724B183E284400FB2FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722D183E284400FB2FC0 /* UIKit.framework */; };
 		2D4D7253183E284500FB2FC0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D4D7251183E284500FB2FC0 /* InfoPlist.strings */; };
-		2D4D7255183E284500FB2FC0 /* Final_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */; };
 		2D4D725F183E2CF400FB2FC0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D725E183E2CF400FB2FC0 /* MapKit.framework */; };
 		2D4D7265183E3AC400FB2FC0 /* FPListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */; };
 		2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */; };
 		2D8F189C1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */; };
+		2D8F189F1850CF1800CCDDC0 /* FPMapViewDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F189E1850CF1800CCDDC0 /* FPMapViewDelegateTest.m */; };
+		52811314A4434332AB8A20EE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7CF32BF40E4F83BA2A0958 /* libPods.a */; };
+		F587F39804644497BB3504B9 /* libPods-Final ProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DB7083E85D4D5187BC8364 /* libPods-Final ProjectTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,6 @@
 		2D4D7248183E284400FB2FC0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2D4D7250183E284500FB2FC0 /* Final ProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Final ProjectTests-Info.plist"; sourceTree = "<group>"; };
 		2D4D7252183E284500FB2FC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Final_ProjectTests.m; sourceTree = "<group>"; };
 		2D4D725E183E2CF400FB2FC0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		2D4D7263183E3AC400FB2FC0 /* FPListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPListTableViewController.h; sourceTree = "<group>"; };
 		2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPListTableViewController.m; sourceTree = "<group>"; };
@@ -75,6 +76,12 @@
 		2D8F189A1850ABCF00CCDDC0 /* FPTaskCreationTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTaskCreationTableViewControllerDelegate.h; sourceTree = "<group>"; };
 		2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTaskCreationTableViewControllerDelegate.m; sourceTree = "<group>"; };
 		2D8F189D1850B84E00CCDDC0 /* FPTaskCreationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTaskCreationDelegate.h; sourceTree = "<group>"; };
+		2D8F189E1850CF1800CCDDC0 /* FPMapViewDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPMapViewDelegateTest.m; sourceTree = "<group>"; };
+		2D8F18A01850E11D00CCDDC0 /* FPItemDetailDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPItemDetailDelegate.h; sourceTree = "<group>"; };
+		3E2944B25348426686764304 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		5C706CEDFB5B42A3A1ACF60A /* Pods-Final ProjectTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final ProjectTests.xcconfig"; path = "Pods/Pods-Final ProjectTests.xcconfig"; sourceTree = "<group>"; };
+		60DB7083E85D4D5187BC8364 /* libPods-Final ProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Final ProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C7CF32BF40E4F83BA2A0958 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,7 @@
 				2D4D722C183E284400FB2FC0 /* CoreGraphics.framework in Frameworks */,
 				2D4D722E183E284400FB2FC0 /* UIKit.framework in Frameworks */,
 				2D4D722A183E284400FB2FC0 /* Foundation.framework in Frameworks */,
+				52811314A4434332AB8A20EE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +104,7 @@
 				2D4D7249183E284400FB2FC0 /* XCTest.framework in Frameworks */,
 				2D4D724B183E284400FB2FC0 /* UIKit.framework in Frameworks */,
 				2D4D724A183E284400FB2FC0 /* Foundation.framework in Frameworks */,
+				F587F39804644497BB3504B9 /* libPods-Final ProjectTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +118,8 @@
 				2D4D724E183E284500FB2FC0 /* Final ProjectTests */,
 				2D4D7228183E284400FB2FC0 /* Frameworks */,
 				2D4D7227183E284400FB2FC0 /* Products */,
+				3E2944B25348426686764304 /* Pods.xcconfig */,
+				5C706CEDFB5B42A3A1ACF60A /* Pods-Final ProjectTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +140,8 @@
 				2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */,
 				2D4D722D183E284400FB2FC0 /* UIKit.framework */,
 				2D4D7248183E284400FB2FC0 /* XCTest.framework */,
+				9C7CF32BF40E4F83BA2A0958 /* libPods.a */,
+				60DB7083E85D4D5187BC8364 /* libPods-Final ProjectTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,6 +170,7 @@
 				2D8F189A1850ABCF00CCDDC0 /* FPTaskCreationTableViewControllerDelegate.h */,
 				2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */,
 				2D8F189D1850B84E00CCDDC0 /* FPTaskCreationDelegate.h */,
+				2D8F18A01850E11D00CCDDC0 /* FPItemDetailDelegate.h */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -175,8 +189,8 @@
 		2D4D724E183E284500FB2FC0 /* Final ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				2D4D7254183E284500FB2FC0 /* Final_ProjectTests.m */,
 				2D4D724F183E284500FB2FC0 /* Supporting Files */,
+				2D8F189E1850CF1800CCDDC0 /* FPMapViewDelegateTest.m */,
 			);
 			path = "Final ProjectTests";
 			sourceTree = "<group>";
@@ -197,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D4D7258183E284500FB2FC0 /* Build configuration list for PBXNativeTarget "Final Project" */;
 			buildPhases = (
+				F8B69D34414843BFAD80BE95 /* Check Pods Manifest.lock */,
 				2D4D7222183E284400FB2FC0 /* Sources */,
 				2D4D7223183E284400FB2FC0 /* Frameworks */,
 				2D4D7224183E284400FB2FC0 /* Resources */,
+				1D4CFBCD89BF4885B2AF9417 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,9 +230,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D4D725B183E284500FB2FC0 /* Build configuration list for PBXNativeTarget "Final ProjectTests" */;
 			buildPhases = (
+				B13946068B684EFFAE08CDAE /* Check Pods Manifest.lock */,
 				2D4D7243183E284400FB2FC0 /* Sources */,
 				2D4D7244183E284400FB2FC0 /* Frameworks */,
 				2D4D7245183E284400FB2FC0 /* Resources */,
+				70F704E7354646219E87A9C7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -283,6 +301,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D4CFBCD89BF4885B2AF9417 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70F704E7354646219E87A9C7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Final ProjectTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B13946068B684EFFAE08CDAE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8B69D34414843BFAD80BE95 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2D4D7222183E284400FB2FC0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -304,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D4D7255183E284500FB2FC0 /* Final_ProjectTests.m in Sources */,
+				2D8F189F1850CF1800CCDDC0 /* FPMapViewDelegateTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +501,7 @@
 		};
 		2D4D7259183E284500FB2FC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E2944B25348426686764304 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -433,6 +515,7 @@
 		};
 		2D4D725A183E284500FB2FC0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E2944B25348426686764304 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -446,6 +529,7 @@
 		};
 		2D4D725C183E284500FB2FC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C706CEDFB5B42A3A1ACF60A /* Pods-Final ProjectTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Final Project.app/Final Project";
@@ -469,6 +553,7 @@
 		};
 		2D4D725D183E284500FB2FC0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C706CEDFB5B42A3A1ACF60A /* Pods-Final ProjectTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Final Project.app/Final Project";
