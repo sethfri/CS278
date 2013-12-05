@@ -1,0 +1,7 @@
+platform :ios, '7.0'
+
+pod 'SAMTextView'
+
+target 'Final ProjectTests' do
+	pod 'OCMock'
+end

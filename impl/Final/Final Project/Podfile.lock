@@ -1,0 +1,13 @@
+PODS:
+  - OCMock (2.2.1)
+  - SAMTextView (0.2.0)
+
+DEPENDENCIES:
+  - OCMock
+  - SAMTextView
+
+SPEC CHECKSUMS:
+  OCMock: 80e4cfbc71a0e1bd28caf10a9fda27da7c4c8402
+  SAMTextView: 3a18c24b6bbfb856ac6e519536b3eec27a2f2fb8
+
+COCOAPODS: 0.27.1

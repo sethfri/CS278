@@ -1,0 +1,3 @@
+language: objective-c
+xcode_project: Final Project.xcworkspace
+xcode_scheme: Final ProjectTests
