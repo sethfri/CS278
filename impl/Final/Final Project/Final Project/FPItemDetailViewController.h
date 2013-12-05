@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPItemDetailDelegate.h"
 
 @class FPPointAnnotation;
 
 @interface FPItemDetailViewController : UIViewController
 
 @property (strong, nonatomic) FPPointAnnotation *annotation;
+@property (weak, nonatomic) id<FPItemDetailDelegate> delegate;
 
 @end

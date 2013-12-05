@@ -13,10 +13,11 @@
 #import "FPMapViewDelegate.h"
 #import "FPTaskCreationTableViewControllerDelegate.h"
 #import "FPTaskCreationTableViewController.h"
+#import "FPItemDetailDelegate.h"
 
 @import MapKit;
 
-@interface FPMapViewController () <FPListTableViewControllerDelegate>
+@interface FPMapViewController () <FPListTableViewControllerDelegate, FPItemDetailDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
@@ -106,6 +107,7 @@
         
         FPItemDetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.annotation = selectedAnnotation;
+        detailViewController.delegate = self;
     } else if ([segue.identifier isEqualToString:@"PresentTaskCreation"]) {
         UINavigationController *destinationNavigationController = segue.destinationViewController;
         FPTaskCreationTableViewController *destinationViewController = [destinationNavigationController.viewControllers firstObject];
@@ -121,6 +123,8 @@
 
 - (IBAction)taskCreationTableViewControllerDone:(UIStoryboardSegue *)segue {}
 
+- (IBAction)itemDetailViewControllerComplete:(UIStoryboardSegue *)segue {}
+
 #pragma mark - List Table View Controller Delegate
 
 - (void)listTableViewController:(FPListTableViewController *)listTableViewController didSelectAnnotation:(FPPointAnnotation *)annotation {
@@ -129,6 +133,13 @@
     
     MKCoordinateRegion region = MKCoordinateRegionMake(itemCoordinate, regionSpan);
     self.mapView.region = region;
+}
+
+#pragma mark - Item Detail View Controller Delegate
+
+- (void)itemDetailViewController:(FPItemDetailViewController *)itemDetailViewController didCompletePointAnnotation:(FPPointAnnotation *)pointAnnotation {
+    [self.mapView removeAnnotation:pointAnnotation];
+    [self.annotations removeObject:pointAnnotation];
 }
 
 #pragma mark - Helper Functions
