@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPTaskCreationDelegate.h"
+
+@import CoreLocation;
 
 @interface FPTaskCreationTableViewController : UITableViewController
+
+@property (nonatomic) CLLocationCoordinate2D coordinateForNewTask;
+
+@property (weak, nonatomic) id<FPTaskCreationDelegate> delegate;
 
 @end

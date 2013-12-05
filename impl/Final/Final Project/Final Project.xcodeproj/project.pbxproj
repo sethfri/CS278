@@ -27,6 +27,7 @@
 		2D4D725F183E2CF400FB2FC0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D725E183E2CF400FB2FC0 /* MapKit.framework */; };
 		2D4D7265183E3AC400FB2FC0 /* FPListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7264183E3AC400FB2FC0 /* FPListTableViewController.m */; };
 		2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */; };
+		2D8F189C1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,9 @@
 		2D4D7266183E400F00FB2FC0 /* FPItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPItemDetailViewController.h; sourceTree = "<group>"; };
 		2D4D7267183E400F00FB2FC0 /* FPItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPItemDetailViewController.m; sourceTree = "<group>"; };
 		2D4D7269183E767800FB2FC0 /* FPListTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPListTableViewControllerDelegate.h; sourceTree = "<group>"; };
+		2D8F189A1850ABCF00CCDDC0 /* FPTaskCreationTableViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTaskCreationTableViewControllerDelegate.h; sourceTree = "<group>"; };
+		2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTaskCreationTableViewControllerDelegate.m; sourceTree = "<group>"; };
+		2D8F189D1850B84E00CCDDC0 /* FPTaskCreationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTaskCreationDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,9 @@
 				2D4479F0184F4F3B00E04FA8 /* FPMapViewDelegate.m */,
 				2D4479F2185085D900E04FA8 /* FPTaskCreationTableViewController.h */,
 				2D4479F3185085D900E04FA8 /* FPTaskCreationTableViewController.m */,
+				2D8F189A1850ABCF00CCDDC0 /* FPTaskCreationTableViewControllerDelegate.h */,
+				2D8F189B1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m */,
+				2D8F189D1850B84E00CCDDC0 /* FPTaskCreationDelegate.h */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -281,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D8F189C1850B1E300CCDDC0 /* FPTaskCreationTableViewControllerDelegate.m in Sources */,
 				2D4D723A183E284400FB2FC0 /* FPAppDelegate.m in Sources */,
 				2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */,
 				2D4D7236183E284400FB2FC0 /* main.m in Sources */,

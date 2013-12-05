@@ -37,7 +37,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Xoh-Gx-aun">
                             <connections>
-                                <segue destination="Wfn-ys-KSt" kind="modal" id="a9J-mx-VXz"/>
+                                <segue destination="Wfn-ys-KSt" kind="modal" identifier="PresentTaskCreation" id="a9J-mx-VXz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -127,7 +127,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindSelected" unwindAction="listTableViewControllerSelected:" id="uNR-0K-7dB"/>
+                                    <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindListDetailSelected" unwindAction="listTableViewControllerSelected:" id="uNR-0K-7dB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -139,7 +139,7 @@
                     <navigationItem key="navigationItem" title="List" id="AKm-1S-xFH">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="S03-r7-fhh">
                             <connections>
-                                <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindDone" unwindAction="listTableViewControllerDone:" id="LyA-Oa-FLd"/>
+                                <segue destination="EJW-nW-ra8" kind="unwind" identifier="UnwindListDetailDone" unwindAction="listTableViewControllerDone:" id="LyA-Oa-FLd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -214,7 +214,7 @@
                         <sections>
                             <tableViewSection id="tYs-tW-4iO">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GSl-Fx-UXA">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GSl-Fx-UXA">
                                         <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GSl-Fx-UXA" id="p6c-dR-LMh">
@@ -315,7 +315,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </tableViewSection>
                             <tableViewSection id="WTE-ux-ct0">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="210" id="KaQ-cU-D5u">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="210" id="KaQ-cU-D5u">
                                         <rect key="frame" x="0.0" y="458" width="320" height="210"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KaQ-cU-D5u" id="fZH-Vo-rNh">
@@ -352,14 +352,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="qt7-sE-9lq">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Dxy-LW-bhX"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Dxy-LW-bhX">
+                            <connections>
+                                <segue destination="y2F-6e-Fwn" kind="unwind" identifier="UnwindTaskCreation" unwindAction="taskCreationTableViewControllerDone:" id="chj-t6-HZl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="bbk-Jw-V5B" id="FcL-0E-eZK"/>
                         <outlet property="deadlineTableViewCell" destination="xuK-G6-fbJ" id="F7f-Gw-ckW"/>
+                        <outlet property="detailsTextView" destination="sGz-FY-E4P" id="7c3-Cm-x99"/>
+                        <outlet property="summaryTextField" destination="taE-Ww-FD0" id="8WI-ut-xlM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYG-UO-qHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="y2F-6e-Fwn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1756" y="813"/>
         </scene>

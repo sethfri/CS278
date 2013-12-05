@@ -7,13 +7,16 @@
 //
 
 #import "FPTaskCreationTableViewController.h"
+#import "FPPointAnnotation.h"
 
 static NSInteger const kDeadlineSection = 1;
 
 @interface FPTaskCreationTableViewController () <UITextFieldDelegate, UITextViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *summaryTextField;
 @property (weak, nonatomic) IBOutlet UITableViewCell *deadlineTableViewCell;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UITextView *detailsTextView;
 
 @property (nonatomic) BOOL datePickerIsDisplayed;
 
@@ -32,6 +35,19 @@ static NSInteger const kDeadlineSection = 1;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"UnwindTaskCreation"]) {
+        FPPointAnnotation *pointAnnotation = [FPPointAnnotation pointAnnotationWithTitle:self.summaryTextField.text
+                                                                              coordinate:self.coordinateForNewTask
+                                                                                deadline:self.datePicker.date
+                                                                              andDetails:self.detailsTextView.text];
+        [self.delegate taskCreationTableViewController:self
+                              didCreatePointAnnotation:pointAnnotation];
+    }
 }
 
 #pragma mark - Table View Delegate
@@ -86,17 +102,5 @@ static NSInteger const kDeadlineSection = 1;
         self.datePickerIsDisplayed = NO;
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
-*/
 
 @end

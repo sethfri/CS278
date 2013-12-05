@@ -11,6 +11,8 @@
 #import "FPItemDetailViewController.h"
 #import "FPListTableViewControllerDelegate.h"
 #import "FPMapViewDelegate.h"
+#import "FPTaskCreationTableViewControllerDelegate.h"
+#import "FPTaskCreationTableViewController.h"
 
 @import MapKit;
 
@@ -18,8 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
-@property (strong, nonatomic) NSArray *annotations;
+@property (strong, nonatomic) NSMutableArray *annotations;
 @property (strong, nonatomic) FPMapViewDelegate *mapViewDelegate;
+@property (strong, nonatomic) FPTaskCreationTableViewControllerDelegate *taskCreationTableViewControllerDelegate;
 
 @end
 
@@ -27,20 +30,20 @@
 
 #pragma mark - Custom Getters
 
-- (NSArray *)annotations {
+- (NSMutableArray *)annotations {
     if (!_annotations) {
-        _annotations = @[[FPPointAnnotation pointAnnotationWithTitle:@"Install Internet"
-                                                          coordinate:CLLocationCoordinate2DMake(36.139483, -86.8331)
-                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
-                                                          andDetails:@"Install cable box and router at M. King's house."],
-                         [FPPointAnnotation pointAnnotationWithTitle:@"Install Television"
-                                                          coordinate:CLLocationCoordinate2DMake(36.157233, -86.795583)
-                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
-                                                          andDetails:@"A. Brown's house. Needs tv receiver box. Wiring may be necessary."],
-                         [FPPointAnnotation pointAnnotationWithTitle:@"Examine Switch Box"
-                                                          coordinate:CLLocationCoordinate2DMake(36.133533, -86.760833)
-                                                            deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
-                                                          andDetails:@"Several residents at 1901 18th Ave. S report intermittent outages. Test switching box to ensure problem is further up the line."]];
+        _annotations = [@[[FPPointAnnotation pointAnnotationWithTitle:@"Install Internet"
+                                                           coordinate:CLLocationCoordinate2DMake(36.139483, -86.8331)
+                                                             deadline:[NSDate dateWithTimeIntervalSinceNow:(3.5 * 60 * 60)]
+                                                           andDetails:@"Install cable box and router at M. King's house."],
+                          [FPPointAnnotation pointAnnotationWithTitle:@"Install Television"
+                                                           coordinate:CLLocationCoordinate2DMake(36.157233, -86.795583)
+                                                             deadline:[NSDate dateWithTimeIntervalSinceNow:(5 * 60 * 60)]
+                                                           andDetails:@"A. Brown's house. Needs tv receiver box. Wiring may be necessary."],
+                          [FPPointAnnotation pointAnnotationWithTitle:@"Examine Switch Box"
+                                                           coordinate:CLLocationCoordinate2DMake(36.133533, -86.760833)
+                                                             deadline:[NSDate dateWithTimeIntervalSinceNow:(8.25 * 60 * 60)]
+                                                           andDetails:@"Several residents at 1901 18th Ave. S report intermittent outages. Test switching box to ensure problem is further up the line."]] mutableCopy];
     }
     
     return _annotations;
@@ -61,13 +64,25 @@
     return _mapViewDelegate;
 }
 
+- (FPTaskCreationTableViewControllerDelegate *)taskCreationTableViewControllerDelegate {
+    if (!_taskCreationTableViewControllerDelegate) {
+        __weak typeof(self)weakSelf = self;
+        
+        _taskCreationTableViewControllerDelegate = [FPTaskCreationTableViewControllerDelegate taskCreationTableViewControllerDelegateWithTaskCreatedBlock:^(FPPointAnnotation *taskAnnotation) {
+            [weakSelf addNewTaskWithPointAnnotation:taskAnnotation];
+        }];
+    }
+    
+    return _taskCreationTableViewControllerDelegate;
+}
+
 #pragma mark - View Controller Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.mapView.delegate = self.mapViewDelegate;
-    [self.mapView addAnnotations:self.annotations];
+    [self.mapView addAnnotations:[self.annotations copy]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,12 +106,20 @@
         
         FPItemDetailViewController *detailViewController = segue.destinationViewController;
         detailViewController.annotation = selectedAnnotation;
+    } else if ([segue.identifier isEqualToString:@"PresentTaskCreation"]) {
+        UINavigationController *destinationNavigationController = segue.destinationViewController;
+        FPTaskCreationTableViewController *destinationViewController = [destinationNavigationController.viewControllers firstObject];
+        
+        [destinationViewController setCoordinateForNewTask:self.mapView.userLocation.coordinate];
+        [destinationViewController setDelegate:self.taskCreationTableViewControllerDelegate];
     }
 }
 
 - (IBAction)listTableViewControllerDone:(UIStoryboardSegue *)segue {}
 
 - (IBAction)listTableViewControllerSelected:(UIStoryboardSegue *)segue {}
+
+- (IBAction)taskCreationTableViewControllerDone:(UIStoryboardSegue *)segue {}
 
 #pragma mark - List Table View Controller Delegate
 
@@ -106,6 +129,13 @@
     
     MKCoordinateRegion region = MKCoordinateRegionMake(itemCoordinate, regionSpan);
     self.mapView.region = region;
+}
+
+#pragma mark - Helper Functions
+
+- (void)addNewTaskWithPointAnnotation:(FPPointAnnotation *)pointAnnotation {
+    [self.mapView addAnnotation:pointAnnotation];
+    [self.annotations addObject:pointAnnotation];
 }
 
 @end
