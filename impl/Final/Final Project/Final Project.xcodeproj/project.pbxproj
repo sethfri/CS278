@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D4479EE184F46D700E04FA8 /* FPPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */; };
 		2D4479F1184F4F3B00E04FA8 /* FPMapViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4479F0184F4F3B00E04FA8 /* FPMapViewDelegate.m */; };
+		2D4479F4185085D900E04FA8 /* FPTaskCreationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D4479F3185085D900E04FA8 /* FPTaskCreationTableViewController.m */; };
 		2D4D722A183E284400FB2FC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D7229183E284400FB2FC0 /* Foundation.framework */; };
 		2D4D722C183E284400FB2FC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */; };
 		2D4D722E183E284400FB2FC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D4D722D183E284400FB2FC0 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 		2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPointAnnotation.m; sourceTree = "<group>"; };
 		2D4479EF184F4F3B00E04FA8 /* FPMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPMapViewDelegate.h; sourceTree = "<group>"; };
 		2D4479F0184F4F3B00E04FA8 /* FPMapViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPMapViewDelegate.m; sourceTree = "<group>"; };
+		2D4479F2185085D900E04FA8 /* FPTaskCreationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTaskCreationTableViewController.h; sourceTree = "<group>"; };
+		2D4479F3185085D900E04FA8 /* FPTaskCreationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTaskCreationTableViewController.m; sourceTree = "<group>"; };
 		2D4D7226183E284400FB2FC0 /* Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4D7229183E284400FB2FC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2D4D722B183E284400FB2FC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 				2D4479ED184F46D700E04FA8 /* FPPointAnnotation.m */,
 				2D4479EF184F4F3B00E04FA8 /* FPMapViewDelegate.h */,
 				2D4479F0184F4F3B00E04FA8 /* FPMapViewDelegate.m */,
+				2D4479F2185085D900E04FA8 /* FPTaskCreationTableViewController.h */,
+				2D4479F3185085D900E04FA8 /* FPTaskCreationTableViewController.m */,
 			);
 			path = "Final Project";
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				2D4D723A183E284400FB2FC0 /* FPAppDelegate.m in Sources */,
 				2D4D7268183E400F00FB2FC0 /* FPItemDetailViewController.m in Sources */,
 				2D4D7236183E284400FB2FC0 /* main.m in Sources */,
+				2D4479F4185085D900E04FA8 /* FPTaskCreationTableViewController.m in Sources */,
 				2D4D7240183E284400FB2FC0 /* FPMapViewController.m in Sources */,
 				2D4D7265183E3AC400FB2FC0 /* FPListTableViewController.m in Sources */,
 				2D4479EE184F46D700E04FA8 /* FPPointAnnotation.m in Sources */,
