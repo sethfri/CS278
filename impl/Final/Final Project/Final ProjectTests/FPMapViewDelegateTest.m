@@ -41,22 +41,37 @@
     XCTAssertNotNil(mapViewDelegate, @"Failed to initialize");
 }
 
-/*- (void)testDidUpdateUserLocation {
+- (void)testDidUpdateUserLocation {
     id mockUserLocation = [OCMockObject mockForClass:[MKUserLocation class]];
-    CLLocationCoordinate2D testCoordinate = CLLocationCoordinate2DMake(2.0, 2.0);
-    [[[mockUserLocation expect] andReturnValue:testCoordinate] coordinate];
+    
+    CLLocation *testLocation = [[CLLocation alloc] initWithLatitude:2.0
+                                                          longitude:2.0];
+    
+    [(MKUserLocation *)[[mockUserLocation expect] andReturn:testLocation] location];
     
     MKMapView *mapView = [[MKMapView alloc] init];
     MKCoordinateRegion firstRegion = mapView.region;
+    MKCoordinateRegion secondRegion = MKCoordinateRegionMake(testLocation.coordinate, MKCoordinateSpanMake(3.0, 3.0));
+    NSValue *secondRegionValue = [NSValue valueWithBytes:&secondRegion
+                                                objCType:@encode(MKCoordinateRegion)];
+    
+    id mockMapView = [OCMockObject partialMockForObject:mapView];
+    [[[mockMapView stub] andReturn:mockUserLocation] userLocation];
+    [(MKMapView *)[[mockMapView stub] andReturnValue:secondRegionValue] region];
     
     FPMapViewDelegate *mapViewDelegate = [[FPMapViewDelegate alloc] initWithPinSelectedBlock:nil];
+    mapView.delegate = mapViewDelegate;
+    
     [mapViewDelegate mapView:mapView
        didUpdateUserLocation:mockUserLocation];
     
-    XCTAssertEqual(mapView.region.center, testCoordinate, @"Should center the map around the testCoordinate");
-    XCTAssertNotEqual(firstRegion, mapView.region, @"Should update the region from when the map is originally initialized");
+    XCTAssertEqual(((MKMapView *)mockMapView).region.center.latitude, testLocation.coordinate.latitude, @"Should center the map around the testCoordinate's latitude");
+    XCTAssertEqual(((MKMapView *)mockMapView).region.center.longitude, testLocation.coordinate.longitude, @"Should center the map around the testCoordinate's longitude");
+    XCTAssertFalse([self region:firstRegion isEqualToOtherRegion:((MKMapView *)mockMapView).region], @"Should update the region from when the map is originally initialized");
+    //XCTAssertNotEqual(firstRegion, mapView.region, @"Should update the region from when the map is originally initialized");
     [mockUserLocation verify];
-}*/
+    [mockMapView verify];
+}
 
 - (void)testDidSelectAnnotationView {
     // Test with an MKPinAnnotationView to make sure the block gets called
@@ -100,6 +115,18 @@
     
     XCTAssertNotNil(annotationView, @"Annotation view should not be nil");
     XCTAssertTrue([annotationView isKindOfClass:[MKPinAnnotationView class]], @"Annotation view should be a pin");
+}
+
+#pragma mark - Helper Methods
+
+- (BOOL)region:(MKCoordinateRegion)region isEqualToOtherRegion:(MKCoordinateRegion)otherRegion {
+    CLLocationCoordinate2D center = region.center;
+    CLLocationCoordinate2D otherCenter = otherRegion.center;
+    
+    MKCoordinateSpan span = region.span;
+    MKCoordinateSpan otherSpan = otherRegion.span;
+    
+    return (center.latitude == otherCenter.latitude) && (center.longitude == otherCenter.longitude) && (span.latitudeDelta == otherSpan.latitudeDelta) && (span.longitudeDelta == otherSpan.longitudeDelta);
 }
 
 @end
